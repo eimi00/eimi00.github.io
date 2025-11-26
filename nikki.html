@@ -4,47 +4,68 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>にっき - ほわほわ庭</title>
-  <link rel="stylesheet" href="style.css">
 
   <style>
     body {
       background: #fff8e6;
       font-family: "Noto Sans JP", sans-serif;
+      text-align: center;
       margin: 0;
       padding: 0;
       color: #4a4a4a;
-      text-align: center;
-    }
-
-    .container {
-      max-width: 700px;
-      margin: 40px auto;
-      background: white;
-      padding: 30px 24px;
-      border-radius: 20px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.05);
-      border: 2px solid #f2e8d9;
-      text-align: left;
     }
 
     h1 {
-      text-align: center;
-      font-size: 26px;
-      margin-bottom: 10px;
-      color: #3a3a3a;
+      margin-top: 40px;
+      font-size: 28px;
     }
 
-    .date {
-      text-align: center;
-      color: #a39c93;
-      font-size: 14px;
-      margin-bottom: 20px;
+    .diary-container {
+      max-width: 700px;
+      margin: 30px auto;
+      text-align: left;
     }
 
-    .text {
-      line-height: 1.9;
+    .entry {
+      background: #fff;
+      margin-bottom: 14px;
+      padding: 18px 22px;
+      border-radius: 16px;
+      border: 2px solid #f2e8d9;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .entry:hover {
+      background: #fff3d5;
+    }
+
+    .title {
       font-size: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .arrow {
+      font-size: 18px;
+      transition: transform 0.2s ease;
+    }
+
+    .content {
+      margin-top: 12px;
+      line-height: 1.8;
+      display: none;
       white-space: pre-wrap;
+    }
+
+    .open .content {
+      display: block;
+    }
+
+    .open .arrow {
+      transform: rotate(90deg);
     }
 
     .back {
@@ -53,36 +74,66 @@
       margin: 30px 0;
       color: #6f6d67;
       text-decoration: none;
-      font-size: 14px;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
-    <h1>ほわほわ庭ができた日</h1>
-    <div class="date">2025/11/27</div>
+<h1>にっき</h1>
 
-    <div class="text">
-サイトをついに公開した！  
-ロゴを描いて、トップページを作って、アイコンも並べて……  
+<div class="diary-container">
+
+  <!-- ■ 1記事目 ■ -->
+  <div class="entry">
+    <div class="title">
+      <span>2025/11/27　ほわほわ庭ができた日</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="content">
+サイトをついに公開した！
+
+ロゴを描いて、トップページを作って、アイコンも並べて……
 すごく可愛い世界ができた気がする。
 
-もちまろも、トリくんも、エイミ00も、  
+もちまろも、トリくんも、エイミ00も、
 これからこの“ほわほわ庭”で、ゆったり過ごせるといいな。
 
-・今日サイトを作ったこと
-・ロゴつくった
-・faviconつけた
-・トップページできてきた
-・スクショをXにあげた
-・ワクワクした
-・ちょっと悩んだけど完成して嬉しい
+・今日やったこと  
+- サイト作成  
+- ロゴ作り  
+- favicon設置  
+- トップページ完成  
+- スクショをXに投稿  
+- ワクワクした  
+- 完成して嬉しい  
     </div>
   </div>
 
-  <a href="index.html" class="back">← トップへもどる</a>
+  <!-- ■ 2記事目（増やしたくなったらここに追加） ■ -->
+  <!--
+  <div class="entry">
+    <div class="title">
+      <span>2025/12/03　〇〇した日</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="content">
+ここに本文を書く
+    </div>
+  </div>
+  -->
+
+</div>
+
+<a href="index.html" class="back">← トップへもどる</a>
+
+<script>
+  document.querySelectorAll('.entry').forEach(entry => {
+    entry.addEventListener('click', () => {
+      entry.classList.toggle('open');
+    });
+  });
+</script>
 
 </body>
 </html>
