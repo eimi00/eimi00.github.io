@@ -6,285 +6,305 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont,
-        "ヒラギノ角ゴ ProN", "Yu Gothic", sans-serif;
-      background: #fffaf4;
-      padding: 32px 16px 48px;
-      text-align: center;
-      color: #4b3b32;
-    }
+  /* ==== ページ全体の基本スタイル（ほわほわ庭共通） ==== */
+  body {
+    font-family: "Noto Sans JP", system-ui, -apple-system, BlinkMacSystemFont,
+      "ヒラギノ角ゴ ProN", "Yu Gothic", sans-serif;
+    background: #fff8e6;              /* 他ページと同じ背景色 */
+    padding: 40px 16px 72px;
+    text-align: center;
+    color: #4a4a4a;
+    margin: 0;
+  }
 
-    h1 {
-      font-size: 1.5rem;
-      margin-bottom: 4px;
-    }
+  h1 {
+    font-size: 28px;
+    margin: 0 0 4px;
+  }
 
-    .lead {
-      font-size: 0.95rem;
-      margin-bottom: 20px;
-      color: #777;
-      line-height: 1.6;
-    }
+  .lead {
+    font-size: 14px;
+    margin-bottom: 24px;
+    color: #8c7b6b;                   /* world.html の subtitle と同じトーン */
+    line-height: 1.6;
+  }
 
-    .gacha-container {
-      max-width: 420px;
-      margin: 0 auto;
-      background: #ffffffcc;
-      border-radius: 24px;
-      padding: 24px 16px 20px;
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
-      position: relative;
-      overflow: hidden;
-    }
+  /* ガチャカードまわり */
 
-    /* ガチャ本体 */
+  .gacha-container {
+    max-width: 420px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 24px 20px 20px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+  }
 
-    .gacha-machine {
-      position: relative;
-      width: 220px;
-      margin: 0 auto 8px;
-    }
+  /* ガチャ本体 */
 
-    .gacha-machine-img {
-      width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-    }
+  .gacha-machine {
+    position: relative;
+    width: 220px;
+    margin: 0 auto 8px;
+  }
 
-    /* ぷるぷる揺れるアニメーション */
+  .gacha-machine-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
 
-    @keyframes gacha-shake {
-      0% { transform: translateX(0); }
-      20% { transform: translateX(-4px) rotate(-1deg); }
-      40% { transform: translateX(4px) rotate(1deg); }
-      60% { transform: translateX(-3px) rotate(-1deg); }
-      80% { transform: translateX(3px) rotate(1deg); }
-      100% { transform: translateX(0) rotate(0deg); }
-    }
+  /* ぷるぷる揺れるアニメーション */
 
-    .is-shaking {
-      animation: gacha-shake 0.45s ease;
-    }
+  @keyframes gacha-shake {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-4px) rotate(-1deg); }
+    40% { transform: translateX(4px) rotate(1deg); }
+    60% { transform: translateX(-3px) rotate(-1deg); }
+    80% { transform: translateX(3px) rotate(1deg); }
+    100% { transform: translateX(0) rotate(0); }
+  }
 
-    /* ボタン */
+  .is-shaking {
+    animation: gacha-shake 0.45s ease;
+  }
 
-    .gacha-button {
-      display: inline-block;
-      margin: 6px 0 12px;
-      padding: 10px 22px;
-      border-radius: 999px;
-      border: none;
-      background: #ffdfe8;
-      font-size: 0.95rem;
-      cursor: pointer;
-      box-shadow: 0 3px 0 #f0b6c9;
-      transition: transform 0.05s ease, box-shadow 0.05s ease, opacity 0.2s;
-    }
+  /* ボタン */
 
-    .gacha-button:hover:not(:disabled) {
-      transform: translateY(1px);
-      box-shadow: 0 2px 0 #f0b6c9;
-      opacity: 0.95;
-    }
+  .gacha-button {
+    display: inline-block;
+    margin: 6px 0 12px;
+    padding: 10px 22px;
+    border-radius: 999px;
+    border: none;
+    background: #ffdfe8;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 0 3px 0 #f0b6c9;
+    transition: transform 0.05s ease, box-shadow 0.05s ease, opacity 0.2s;
+  }
 
-    .gacha-button:active:not(:disabled) {
-      transform: translateY(2px);
-      box-shadow: 0 0 0 #f0b6c9;
-    }
+  .gacha-button:hover:not(:disabled) {
+    transform: translateY(1px);
+    box-shadow: 0 2px 0 #f0b6c9;
+    opacity: 0.95;
+  }
 
-    .gacha-button:disabled {
-      opacity: 0.6;
-      cursor: default;
-    }
+  .gacha-button:active:not(:disabled) {
+    transform: translateY(2px);
+    box-shadow: 0 0 0 #f0b6c9;
+  }
 
-    .hint {
-      font-size: 0.8rem;
-      color: #999;
-      margin-bottom: 10px;
-    }
+  .gacha-button:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
 
-    /* 結果カード */
+  .hint {
+    font-size: 0.8rem;
+    color: #999;
+    margin-bottom: 10px;
+  }
 
-    .result-card {
-      margin-top: 6px;
-      border-radius: 20px;
-      background: #fffdf8;
-      padding: 14px 10px 12px;
-      border: 1px solid #f2e2cf;
-    }
+  /* 結果カード */
 
-    .result-label {
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      color: #b39a7e;
-      margin-bottom: 6px;
-    }
+  .result-card {
+    margin-top: 6px;
+    border-radius: 20px;
+    background: #fffdf6;
+    padding: 14px 10px 12px;
+    border: 1px solid #f2e5bf;
+  }
 
-    .rarity {
-      font-size: 0.85rem;
-      margin-bottom: 6px;
-    }
+  .result-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    color: #b39a7e;
+    margin-bottom: 6px;
+  }
 
-    .rarity span {
-      padding: 2px 8px;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      border: 1px dashed #f1c7d4;
-      background: #fff4f7;
-    }
+  .rarity {
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+  }
 
-    .result-image-wrapper {
-      max-width: 260px;
-      margin: 0 auto 8px;
-    }
+  .rarity span {
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    border: 1px dashed #f1c7d4;
+    background: #fff4f7;
+  }
 
-    .result-image {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 16px;
-      background: #fff;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
-      opacity: 0;
-      transform: translateY(6px);
-      transition: opacity 0.35s ease, transform 0.35s ease;
-    }
+  .result-image-wrapper {
+    max-width: 260px;
+    margin: 0 auto 8px;
+  }
 
-    .result-image.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .result-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
 
-    .result-title {
-      font-size: 0.9rem;
-      margin-bottom: 4px;
-    }
+  .result-image.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-    .result-text {
-      font-size: 0.8rem;
-      color: #7f705f;
-      line-height: 1.6;
-      white-space: pre-line;
-    }
+  .result-title {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+  }
 
-    .back-link {
-      margin-top: 18px;
-      font-size: 0.85rem;
-    }
+  .result-text {
+    font-size: 0.8rem;
+    color: #7f705f;
+    line-height: 1.6;
+    white-space: pre-line;
+  }
 
-    .back-link a {
-      color: #8f7f73;
-      text-decoration: none;
-    }
+  /* 戻るリンク → ほかページと同じボタン風に */
 
-    .back-link a:hover {
-      text-decoration: underline;
-    }
+  .back-link {
+    margin-top: 24px;
+    text-align: center;
+  }
 
-/* ===== ほわほわ庭 フッター ===== */
+  .back-link a {
+    display: inline-block;
+    padding: 8px 18px;
+    background: #fff3c8;
+    border-radius: 20px;
+    color: #6a5a4f;
+    text-decoration: none;
+    font-size: 14px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    transition: 0.2s ease;
+  }
 
-.footer {
-  margin-top: 60px;
-  padding: 32px 0 24px;
-  background: #f7f0dc;
-  text-align: center;
-  color: #6a5a4f;
-  font-size: 13px;
-  border-top: 1px solid rgba(0,0,0,0.05);
-}
+  .back-link a:hover {
+    background: #ffeab0;
+    transform: translateY(-2px);
+  }
 
-.footer-title {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 12px;
-}
+  /* ===== ほわほわ庭 フッター ===== */
 
-/* SNSリンク */
-.footer-sns {
-  margin-bottom: 10px;
-}
-
-.footer-sns a {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 12px;
-  background: #fff3c8;
-  color: #6a5a4f;
-  text-decoration: none;
-  padding: 4px 10px;
-  border-radius: 30px;
-  margin: 0 4px;
-  transition: 0.2s ease;
-}
-
-.footer-sns a:hover {
-  background: #ffeab0;
-  transform: translateY(-2px);
-}
-
-/* 丸アイコン部分 */
-.sns-icon {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  font-size: 12px;
-  font-weight: bold;
-  background: #ffffff;
-  color: #6a5a4f;
-}
-
-/* サービス別の色味（ほわほわ調） */
-.sns-x .sns-icon {
-  background: #fff3c8;   /* やさしいきいろ */
-}
-
-.sns-yt .sns-icon {
-  background: #ffcccc;   /* やわらか赤 */
-  color: #d12a2a;
-}
-
-.sns-minne .sns-icon {
-  background: #d8f5d8;   /* やさしいみどり */
-  color: #3a7b47;
-}
-
-/* ページ内リンク */
-.footer-links a {
-  color: #6a5a4f;
-  text-decoration: none;
-  padding: 0 4px;
-}
-
-.footer-links a:hover {
-  text-decoration: underline;
-}
-
-/* コピーライト */
-.footer-copy {
-  margin-top: 6px;
-  font-size: 12px;
-  opacity: 0.6;
-}
-
-/* スマホ調整 */
-@media (max-width: 768px) {
   .footer {
-    padding: 28px 0 20px;
+    margin-top: 60px;
+    padding: 32px 0 24px;
+    background: #f7f0dc;
+    text-align: center;
+    color: #6a5a4f;
+    font-size: 13px;
+    border-top: 1px solid rgba(0,0,0,0.05);
   }
-  .footer-sns a {
-    margin: 4px;
-  }
-}
-/* ===== フッターここまで ===== */
 
-    
-  </style>
+  .footer-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+
+  /* SNSリンク */
+  .footer-sns {
+    margin-bottom: 10px;
+  }
+
+  .footer-sns a {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    background: #fff3c8;
+    color: #6a5a4f;
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: 30px;
+    margin: 0 4px;
+    transition: 0.2s ease;
+  }
+
+  .footer-sns a:hover {
+    background: #ffeab0;
+    transform: translateY(-2px);
+  }
+
+  /* 丸アイコン部分 */
+  .sns-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
+    background: #ffffff;
+    color: #6a5a4f;
+  }
+
+  /* サービス別の色味（ほわほわ調） */
+  .sns-x .sns-icon {
+    background: #fff3c8;   /* やさしいきいろ */
+  }
+
+  .sns-yt .sns-icon {
+    background: #ffcccc;   /* やわらか赤 */
+    color: #d12a2a;
+  }
+
+  .sns-minne .sns-icon {
+    background: #d8f5d8;   /* やさしいみどり */
+    color: #3a7b47;
+  }
+
+  /* ページ内リンク */
+  .footer-links a {
+    color: #6a5a4f;
+    text-decoration: none;
+    padding: 0 4px;
+  }
+
+  .footer-links a:hover {
+    text-decoration: underline;
+  }
+
+  /* コピーライト */
+  .footer-copy {
+    margin-top: 6px;
+    font-size: 12px;
+    opacity: 0.6;
+  }
+
+  /* スマホ調整 */
+  @media (max-width: 768px) {
+    body {
+      padding: 32px 12px 64px;
+    }
+    .gacha-container {
+      max-width: 360px;
+      padding: 20px 16px 20px;
+    }
+    .footer {
+      padding: 28px 0 20px;
+    }
+    .footer-sns a {
+      margin: 4px;
+    }
+  }
+  /* ===== フッターここまで ===== */
+</style>
+
 </head>
 <body>
   <h1>拍手ありがとう🌷</h1>
