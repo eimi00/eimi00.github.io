@@ -76,9 +76,98 @@
     margin-top:4px;       /* ラベルとのスキマも少しだけ短く */
     font-size:14px;
   }
+  /* フッター全体 */
+.footer {
+  margin-top: 60px;
+  padding: 32px 0 24px;
+  background: #f7f0dc;
+  text-align: center;
+  color: #6a5a4f;
+  font-size: 13px;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+/* 内側 */
+.footer-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+/* SNSリンク */
+.footer-sns {
+  margin-bottom: 10px;
+}
+
+.footer-sns a {
+  display: inline-block;
+  font-size: 12px;
+  background: #fff3c8;
+  color: #6a5a4f;
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 12px;
+  margin: 0 4px;
+  transition: 0.2s ease;
+}
+
+.footer-sns a:hover {
+  background: #ffeab0;
+  transform: translateY(-2px);
+}
+
+/* ページリンク */
+.footer-links a {
+  color: #6a5a4f;
+  text-decoration: none;
+  padding: 0 4px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* コピーライト */
+.footer-copy {
+  margin-top: 6px;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+  .footer {
+    padding: 28px 0 20px;
+  }
+  .footer-sns a {
+    margin: 4px;
+  }
+}
+
 </style>
 
 </head>
+<footer class="footer">
+  <div class="footer-inner">
+    <p class="footer-title">ほわほわ庭</p>
+
+    <!-- SNSリンク -->
+    <div class="footer-sns">
+      <a href="https://x.com/________" target="_blank">X</a>
+      <a href="https://instagram.com/________" target="_blank">Instagram</a>
+      <a href="https://minne.com/________" target="_blank">minne</a>
+    </div>
+
+    <p class="footer-links">
+      <a href="index.html">トップ</a> ・
+      <a href="world.html">もちまろのせかい</a> ・
+      <a href="nikki.html">にっき</a>
+    </p>
+
+    <p class="footer-copy">© 2025 ほわほわ庭 / エイミ00</p>
+  </div>
+</footer>
+
 <body>
   <div class="logo">
     <img src="logo.png" alt="ほわほわ庭ロゴ" class="site-logo">
