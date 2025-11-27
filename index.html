@@ -100,13 +100,15 @@
 }
 
 .footer-sns a {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   font-size: 12px;
   background: #fff3c8;
   color: #6a5a4f;
   text-decoration: none;
   padding: 4px 10px;
-  border-radius: 12px;
+  border-radius: 30px;
   margin: 0 4px;
   transition: 0.2s ease;
 }
@@ -115,6 +117,36 @@
   background: #ffeab0;
   transform: translateY(-2px);
 }
+
+/* アイコン部分 */
+.sns-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+  background: #ffffff;
+  color: #6a5a4f;
+}
+
+/* サービス別にほんのり色変える（ほわほわ調） */
+.sns-x .sns-icon {
+  background: #ffffff;
+}
+
+.sns-yt .sns-icon {
+  background: #ffcccc;
+  color: #d12a2a;
+}
+
+.sns-minne .sns-icon {
+  background: #d8f5d8;
+  color: #3a7b47;
+}
+
 
 /* ページリンク */
 .footer-links a {
@@ -181,10 +213,21 @@
 
     <!-- SNSリンク -->
     <div class="footer-sns">
-      <a href="https://x.com/________" target="_blank">X</a>
-      <a href="https://instagram.com/________" target="_blank">Instagram</a>
-      <a href="https://minne.com/________" target="_blank">minne</a>
-    </div>
+  <a href="https://x.com/________" target="_blank" class="sns-x">
+    <span class="sns-icon">𝕏</span>
+    X
+  </a>
+
+  <a href="https://youtube.com/________" target="_blank" class="sns-yt">
+    <span class="sns-icon">▶</span>
+    YouTube
+  </a>
+
+  <a href="https://minne.com/________" target="_blank" class="sns-minne">
+    <span class="sns-icon">✿</span>
+    minne
+  </a>
+</div>
 
     <p class="footer-links">
       <a href="index.html">トップ</a> ・
