@@ -83,22 +83,27 @@
       color: #6f6d67;
       text-decoration: none;
     }
+.tag-list {
+  margin-top: 8px;
+}
 
-     .tag {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 14px;
-      margin: 4px;
-      font-size: 0.85rem;
-      color: #6b675e;
-      background: #f7f4ea;
-    }
-    /* カラバリ */
-    .tag-yellow  { background: #fff2c7; } /* やさしい黄色 */
-    .tag-pink    { background: #ffe3ea; } /* ピーチピンク */
-    .tag-blue    { background: #e3f4ff; } /* ゆる水色 */
-    .tag-green   { background: #e6f5df; } /* ほわグリーン */
-    .tag-purple  { background: #f0e9ff; } /* くすみラベンダー */
+/* 共通デザイン */
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 14px;
+  margin: 4px 0;
+  font-size: 0.85rem;
+  color: #6b675e;
+  background: #f7f4ea;   /* ベースのクリーム色 */
+}
+
+/* カラーバリエーション */
+.tag-green  { background: #e6f5df; }  /* あつ森・サイトづくり用とか */
+.tag-pink   { background: #ffe3ea; }
+.tag-blue   { background: #e3f4ff; }
+.tag-yellow { background: #fff2c7; }
+.tag-purple { background: #f0e9ff; }
 
   </style>
 </head>
@@ -132,8 +137,8 @@
 - スクショをXに投稿  
 - ワクワクした  
 - 完成して嬉しい 
-<p class="tag-green">
-  <span class="tag">🏠 サイトづくり</span>
+<p class="tag-list">
+  <span class="tag tag-green">🏠 サイトづくり</span>
 </p>
     </div>
   </div>
