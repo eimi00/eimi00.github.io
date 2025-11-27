@@ -134,13 +134,86 @@
   background: #ffeab0;
   transform: translateY(-2px);
 }
+.world-hero {
+  margin: 10px auto 32px;
+  text-align: center;
+}
+
+.world-hero img {
+  max-width: 320px;
+  width: 70%;
+  border-radius: 24px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+}
+.character-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* 共通：右上にうっすらアイコン */
+.character-card::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  right: 10px;
+  font-size: 56px;
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+/* もちまろ＝みたらし団子 */
+.character-card[data-char="mochimaro"]::before {
+  content: "🍡";
+}
+
+/* エイミ00＝きらきら＋魔法イメージ */
+.character-card[data-char="eimi00"]::before {
+  content: "✨";
+}
+
+/* トリくん＝本（ものしり感） */
+.character-card[data-char="tori-kun"]::before {
+  content: "📘";
+}
+.character-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.character-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.16);
+}
+@media (max-width: 768px) {
+  .character-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .character-card {
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .world-hero img {
+    width: 80%;
+    max-width: 280px;
+  }
+
+  .back-home {
+    margin-top: 32px;
+  }
+}
 
   </style>
 </head>
 <body>
   <h1>もちまろのせかい</h1>
   <p class="subtitle">エイミ00と、まったり暮らす仲間たちのプロフィールだよ。</p>
-
+<!-- 集合イラスト -->
+  <div class="world-hero">
+    <img src="img/world_hero.png" alt="もちまろたちの集合イラスト">
+  </div>
   <div class="character-list">
 
     <!-- もちまろ -->
