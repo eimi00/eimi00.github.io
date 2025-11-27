@@ -50,11 +50,35 @@
     }
 
     .title {
-      font-size: 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 左側の「日付＋時間＋タイトル」を縦並びにする箱 */
+.title-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* 日付＋時間の行 */
+.date-line {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* 日付 */
+.date {
+  margin-right: 6px;
+}
+
+/* タイトルの行 */
+.title-main {
+  margin: 0;
+  font-size: 16px;
+}
 
     .arrow {
       font-size: 18px;
@@ -121,10 +145,17 @@
 
   <!-- ■ 1記事目 ■ -->
   <div class="entry">
-    <div class="title">
-      <span>2025/11/27<span class="time">09:16</span>  ほわほわ庭ができた日</span>
-      <span class="arrow">▶</span>
-    </div>
+   <div class="title">
+  <div class="title-text">
+    <p class="date-line">
+      <span class="date">2025/11/27</span>
+      <span class="time">09:16</span>
+    </p>
+    <p class="title-main">ほわほわ庭ができた日</p>
+  </div>
+  <span class="arrow">▶</span>
+</div>
+
     <div class="content">
     <img src="nikki_images/nikki_01.jpg" class="diary-img">
 サイトをついに公開した！
