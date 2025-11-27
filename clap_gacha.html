@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>もちまろガチャ｜ほわほわ庭</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont,
+        "ヒラギノ角ゴ ProN", "Yu Gothic", sans-serif;
+      background: #fffaf4;
+      padding: 32px 16px 48px;
+      text-align: center;
+      color: #4b3b32;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 4px;
+    }
+
+    .lead {
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      color: #777;
+      line-height: 1.6;
+    }
+
+    .gacha-container {
+      max-width: 420px;
+      margin: 0 auto;
+      background: #ffffffcc;
+      border-radius: 24px;
+      padding: 24px 16px 20px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ガチャ本体 */
+
+    .gacha-machine {
+      position: relative;
+      width: 220px;
+      margin: 0 auto 8px;
+    }
+
+    .gacha-machine-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* ぷるぷる揺れるアニメーション */
+
+    @keyframes gacha-shake {
+      0% { transform: translateX(0); }
+      20% { transform: translateX(-4px) rotate(-1deg); }
+      40% { transform: translateX(4px) rotate(1deg); }
+      60% { transform: translateX(-3px) rotate(-1deg); }
+      80% { transform: translateX(3px) rotate(1deg); }
+      100% { transform: translateX(0) rotate(0deg); }
+    }
+
+    .is-shaking {
+      animation: gacha-shake 0.45s ease;
+    }
+
+    /* ボタン */
+
+    .gacha-button {
+      display: inline-block;
+      margin: 6px 0 12px;
+      padding: 10px 22px;
+      border-radius: 999px;
+      border: none;
+      background: #ffdfe8;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 0 3px 0 #f0b6c9;
+      transition: transform 0.05s ease, box-shadow 0.05s ease, opacity 0.2s;
+    }
+
+    .gacha-button:hover:not(:disabled) {
+      transform: translateY(1px);
+      box-shadow: 0 2px 0 #f0b6c9;
+      opacity: 0.95;
+    }
+
+    .gacha-button:active:not(:disabled) {
+      transform: translateY(2px);
+      box-shadow: 0 0 0 #f0b6c9;
+    }
+
+    .gacha-button:disabled {
+      opacity: 0.6;
+      cursor: default;
+    }
+
+    .hint {
+      font-size: 0.8rem;
+      color: #999;
+      margin-bottom: 10px;
+    }
+
+    /* 結果カード */
+
+    .result-card {
+      margin-top: 6px;
+      border-radius: 20px;
+      background: #fffdf8;
+      padding: 14px 10px 12px;
+      border: 1px solid #f2e2cf;
+    }
+
+    .result-label {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      color: #b39a7e;
+      margin-bottom: 6px;
+    }
+
+    .rarity {
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+    }
+
+    .rarity span {
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      border: 1px dashed #f1c7d4;
+      background: #fff4f7;
+    }
+
+    .result-image-wrapper {
+      max-width: 260px;
+      margin: 0 auto 8px;
+    }
+
+    .result-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .result-image.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .result-title {
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    .result-text {
+      font-size: 0.8rem;
+      color: #7f705f;
+      line-height: 1.6;
+      white-space: pre-line;
+    }
+
+    .back-link {
+      margin-top: 18px;
+      font-size: 0.85rem;
+    }
+
+    .back-link a {
+      color: #8f7f73;
+      text-decoration: none;
+    }
+
+    .back-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>拍手ありがとう🌷</h1>
+  <p class="lead">
+    ほわほわ庭に拍手してくれてありがとう。<br />
+    お礼に、もちまろガチャを1回どうぞ…🎁
+  </p>
+
+  <div class="gacha-container">
+    <!-- ガチャ本体イラスト（★ここはエイミ00のイラストに差し替え予定） -->
+    <div class="gacha-machine" id="gacha-machine">
+      <img
+        src="img/gacha_machine_sample.png"
+        alt="もちまろガチャ"
+        class="gacha-machine-img"
+      />
+    </div>
+
+    <button class="gacha-button" id="gacha-button">1回まわす</button>
+    <p class="hint">※押すたびにランダムでイラストが出てくるよ</p>
+
+    <div class="result-card">
+      <div class="result-label">今回のガチャ結果</div>
+      <div class="rarity" id="rarity">
+        <!-- ここに「🌟レア」などが入る -->
+      </div>
+
+      <div class="result-image-wrapper">
+        <img
+          id="result-image"
+          class="result-image"
+          src=""
+          alt="ガチャで出たイラスト"
+        />
+      </div>
+
+      <div class="result-title" id="result-title"></div>
+      <div class="result-text" id="result-text"></div>
+    </div>
+  </div>
+
+  <div class="back-link">
+    <a href="/index.html">← ほわほわ庭にもどる</a>
+  </div>
+
+  <script>
+    // ★★ ここにガチャの中身を定義する ★★
+    // src: 画像パス / title: イラストのタイトル / text: 一言メッセージ / rarity: レアリティ表示
+    const gachaItems = [
+      {
+        src: "img/clap_01.png",
+        title: "もちまろのおやつタイム",
+        text: "のんびりおやつ休憩中のもちまろ。\nエイミ00にも休憩時間がちゃんと届きますように🍪",
+        rarity: "⭐ ノーマル"
+      },
+      {
+        src: "img/clap_02.png",
+        title: "まどろみもちまろ",
+        text: "おひるね前の、ふにゃふにゃタイム。\nきょうも一日、おつかれさま…🫧",
+        rarity: "⭐⭐ ちょっとレア"
+      },
+      {
+        src: "img/clap_03.png",
+        title: "エイミ00とおしゃべり",
+        text: "エイミ00と小声でないしょ話。\n「拍手してくれてありがとうだよ〜」",
+        rarity: "⭐⭐⭐ レア"
+      },
+      {
+        src: "img/clap_04.png",
+        title: "みたらし団子を守れ！",
+        text: "もちまろの大好物を死守中。\nいいことあるかも？🍡",
+        rarity: "🌟 シークレット"
+      }
+    ];
+
+    const machineEl = document.getElementById("gacha-machine");
+    const buttonEl = document.getElementById("gacha-button");
+
+    const resultImgEl = document.getElementById("result-image");
+    const resultTitleEl = document.getElementById("result-title");
+    const resultTextEl = document.getElementById("result-text");
+    const rarityEl = document.getElementById("rarity");
+
+    let lastIndex = -1;
+
+    function rollGacha() {
+      if (gachaItems.length === 0) return;
+
+      // ボタン連打防止
+      buttonEl.disabled = true;
+
+      // ガチャ本体ぷるぷる
+      machineEl.classList.add("is-shaking");
+
+      // ちょっと待ってから結果表示（演出用）
+      setTimeout(() => {
+        machineEl.classList.remove("is-shaking");
+
+        // ランダム選択（前回と同じだったらズラす）
+        let index = Math.floor(Math.random() * gachaItems.length);
+        if (gachaItems.length > 1 && index === lastIndex) {
+          index = (index + 1) % gachaItems.length;
+        }
+        lastIndex = index;
+
+        const item = gachaItems[index];
+
+        // 画像フェードイン用に一旦非表示状態に
+        resultImgEl.classList.remove("is-visible");
+        resultImgEl.src = item.src;
+        resultImgEl.alt = item.title;
+
+        // テキスト系
+        resultTitleEl.textContent = item.title;
+        rarityEl.innerHTML = item.rarity
+          ? `<span>${item.rarity}</span>`
+          : "";
+        resultTextEl.textContent = item.text || "";
+
+        // 少し遅らせてふわっと表示
+        setTimeout(() => {
+          resultImgEl.classList.add("is-visible");
+          buttonEl.disabled = false;
+        }, 50);
+      }, 450); // ガチャ揺れの時間と合わせる
+    }
+
+    // ボタン押したとき
+    buttonEl.addEventListener("click", rollGacha);
+
+    // 最初に1回だけ自動で回しておくならこれ
+    // window.addEventListener("DOMContentLoaded", rollGacha);
+  </script>
+</body>
+</html>
