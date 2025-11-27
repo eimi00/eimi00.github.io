@@ -25,12 +25,15 @@
       margin: 30px auto;
       text-align: left;
     }
+
+    /* 本文中の大きい画像（今までどおり） */
     .diary-img {
-      width: 100%;          /* 画面幅に合わせて自動縮小 */
-      max-width: 400px;     /* ここで最大サイズを決める！！ */
+      width: 100%;
+      max-width: 400px;
       height: auto;
       border-radius: 16px;
-      margin: 14px 0;
+      margin: 14px auto;
+      display: block;
       box-shadow: 0 3px 8px rgba(0,0,0,0.08);
     }
 
@@ -49,40 +52,65 @@
       background: #fff3d5;
     }
 
+    /* ここから：サムネ＋タイトルの横並びレイアウト */
+    .entry-header {
+      display: flex;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    /* サムネの枠（ここで「横長＆トリミング」設定） */
+    .diary-thumb {
+      width: 140px;
+      aspect-ratio: 16 / 9;      /* ←比率変えたいときはここだけ変更（例：4 / 3） */
+      overflow: hidden;
+      border-radius: 12px;
+      flex-shrink: 0;
+      background: #f5efe1;
+    }
+
+    .diary-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;         /* 中央を切り抜き表示 */
+      object-position: center;
+      display: block;
+    }
+
+    /* 右側のテキストブロック */
     .title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-/* 左側の「日付＋時間＋タイトル」を縦並びにする箱 */
-.title-text {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
+    /* 左側の「日付＋時間＋タイトル」 */
+    .title-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
 
-/* 日付＋時間の行 */
-.date-line {
-  margin: 0;
-  font-size: 0.85rem;
-  color: #777;
-}
+    .date-line {
+      margin: 0;
+      font-size: 0.85rem;
+      color: #777;
+    }
 
-/* 日付 */
-.date {
-  margin-right: 6px;
-}
+    .date {
+      margin-right: 6px;
+    }
 
-/* タイトルの行 */
-.title-main {
-  margin: 0;
-  font-size: 16px;
-}
+    .title-main {
+      margin: 0;
+      font-size: 16px;
+    }
 
     .arrow {
       font-size: 18px;
       transition: transform 0.2s ease;
+      margin-left: 8px;
     }
 
     .content {
@@ -107,135 +135,137 @@
       color: #6f6d67;
       text-decoration: none;
     }
-.tag-list {
-  margin-top: 8px;
-}
 
-/* 共通デザイン */
-.tag {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 14px;
-  margin: 4px 0;
-  font-size: 0.85rem;
-  color: #6b675e;
-  background: #f7f4ea;   /* ベースのクリーム色 */
-}
+    .tag-list {
+      margin-top: 8px;
+    }
 
-/* カラーバリエーション */
-.tag-green  { background: #e6f5df; }  /* あつ森・サイトづくり用とか */
-.tag-pink   { background: #ffe3ea; }
-.tag-blue   { background: #e3f4ff; }
-.tag-yellow { background: #fff2c7; }
-.tag-purple { background: #f0e9ff; }
+    /* 共通デザイン */
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 14px;
+      margin: 4px 0;
+      font-size: 0.85rem;
+      color: #6b675e;
+      background: #f7f4ea;
+    }
 
-.time {
-  font-size: 0.85em;
-  color: #777;
-  margin-left: 6px;
-}
+    /* カラーバリエーション */
+    .tag-green  { background: #e6f5df; }
+    .tag-pink   { background: #ffe3ea; }
+    .tag-blue   { background: #e3f4ff; }
+    .tag-yellow { background: #fff2c7; }
+    .tag-purple { background: #f0e9ff; }
 
-/* ===== ほわほわ庭 フッター ===== */
+    .time {
+      font-size: 0.85em;
+      color: #777;
+      margin-left: 6px;
+    }
 
-.footer {
-  margin-top: 60px;
-  padding: 32px 0 24px;
-  background: #f7f0dc;
-  text-align: center;
-  color: #6a5a4f;
-  font-size: 13px;
-  border-top: 1px solid rgba(0,0,0,0.05);
-}
+    /* ===== ほわほわ庭 フッター ===== */
 
-.footer-title {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 12px;
-}
+    .footer {
+      margin-top: 60px;
+      padding: 32px 0 24px;
+      background: #f7f0dc;
+      text-align: center;
+      color: #6a5a4f;
+      font-size: 13px;
+      border-top: 1px solid rgba(0,0,0,0.05);
+    }
 
-/* SNSリンク */
-.footer-sns {
-  margin-bottom: 10px;
-}
+    .footer-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
 
-.footer-sns a {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 12px;
-  background: #fff3c8;
-  color: #6a5a4f;
-  text-decoration: none;
-  padding: 4px 10px;
-  border-radius: 30px;
-  margin: 0 4px;
-  transition: 0.2s ease;
-}
+    .footer-sns {
+      margin-bottom: 10px;
+    }
 
-.footer-sns a:hover {
-  background: #ffeab0;
-  transform: translateY(-2px);
-}
+    .footer-sns a {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      background: #fff3c8;
+      color: #6a5a4f;
+      text-decoration: none;
+      padding: 4px 10px;
+      border-radius: 30px;
+      margin: 0 4px;
+      transition: 0.2s ease;
+    }
 
-/* 丸アイコン部分 */
-.sns-icon {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  font-size: 12px;
-  font-weight: bold;
-  background: #ffffff;
-  color: #6a5a4f;
-}
+    .footer-sns a:hover {
+      background: #ffeab0;
+      transform: translateY(-2px);
+    }
 
-/* サービス別の色味（ほわほわ調） */
-.sns-x .sns-icon {
-  background: #fff3c8;   /* やさしいきいろ */
-}
+    .sns-icon {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: bold;
+      background: #ffffff;
+      color: #6a5a4f;
+    }
 
-.sns-yt .sns-icon {
-  background: #ffcccc;   /* やわらか赤 */
-  color: #d12a2a;
-}
+    .sns-x .sns-icon {
+      background: #fff3c8;
+    }
 
-.sns-minne .sns-icon {
-  background: #d8f5d8;   /* やさしいみどり */
-  color: #3a7b47;
-}
+    .sns-yt .sns-icon {
+      background: #ffcccc;
+      color: #d12a2a;
+    }
 
-/* ページ内リンク */
-.footer-links a {
-  color: #6a5a4f;
-  text-decoration: none;
-  padding: 0 4px;
-}
+    .sns-minne .sns-icon {
+      background: #d8f5d8;
+      color: #3a7b47;
+    }
 
-.footer-links a:hover {
-  text-decoration: underline;
-}
+    .footer-links a {
+      color: #6a5a4f;
+      text-decoration: none;
+      padding: 0 4px;
+    }
 
-/* コピーライト */
-.footer-copy {
-  margin-top: 6px;
-  font-size: 12px;
-  opacity: 0.6;
-}
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
 
-/* スマホ調整 */
-@media (max-width: 768px) {
-  .footer {
-    padding: 28px 0 20px;
-  }
-  .footer-sns a {
-    margin: 4px;
-  }
-}
-/* ===== フッターここまで ===== */
+    .footer-copy {
+      margin-top: 6px;
+      font-size: 12px;
+      opacity: 0.6;
+    }
 
-    
+    /* スマホ調整 */
+    @media (max-width: 768px) {
+      .footer {
+        padding: 28px 0 20px;
+      }
+      .footer-sns a {
+        margin: 4px;
+      }
+
+      /* サムネ＋タイトルを縦並びにして見やすく */
+      .entry-header {
+        flex-direction: column;
+      }
+
+      .diary-thumb {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 
@@ -247,19 +277,26 @@
 
   <!-- ■ 1記事目 ■ -->
   <div class="entry">
-   <div class="title">
-  <div class="title-text">
-    <p class="date-line">
-      <span class="date">2025/11/27</span>
-      <span class="time">09:16</span>
-    </p>
-    <p class="title-main">ほわほわ庭ができた日</p>
-  </div>
-  <span class="arrow">▶</span>
-</div>
+    <div class="entry-header">
+      <!-- サムネ（本文と同じ画像ファイル） -->
+      <div class="diary-thumb">
+        <img src="nikki_images/nikki_01.jpg" alt="ほわほわ庭ができた日のサムネ">
+      </div>
+
+      <div class="title">
+        <div class="title-text">
+          <p class="date-line">
+            <span class="date">2025/11/27</span>
+            <span class="time">09:16</span>
+          </p>
+          <p class="title-main">ほわほわ庭ができた日</p>
+        </div>
+        <span class="arrow">▶</span>
+      </div>
+    </div>
 
     <div class="content">
-    <img src="nikki_images/nikki_01.jpg" class="diary-img">
+      <img src="nikki_images/nikki_01.jpg" class="diary-img">
 サイトをついに公開した！
 ロゴを描いて、トップページを作って、アイコンも並べて……
 すごく可愛い世界ができた気がする。
@@ -283,19 +320,25 @@
 
   <!-- ■ 2記事目 ■ -->
   <div class="entry">
-   <div class="title">
-  <div class="title-text">
-    <p class="date-line">
-      <span class="date">2025/11/27</span>
-      <span class="time">11:21</span>
-    </p>
-    <p class="title-main">あつ森サンクスギビング</p>
-  </div>
-  <span class="arrow">▶</span>
-</div>
+    <div class="entry-header">
+      <div class="diary-thumb">
+        <img src="nikki_images/nikki_02.png" alt="あつ森サンクスギビングのサムネ">
+      </div>
+
+      <div class="title">
+        <div class="title-text">
+          <p class="date-line">
+            <span class="date">2025/11/27</span>
+            <span class="time">11:21</span>
+          </p>
+          <p class="title-main">あつ森サンクスギビング</p>
+        </div>
+        <span class="arrow">▶</span>
+      </div>
+    </div>
 
     <div class="content">
-    <img src="nikki_images/nikki_02.png" class="diary-img">
+      <img src="nikki_images/nikki_02.png" class="diary-img">
 ひさしぶりのあつ森。
 今日はちょうどイベントがあった「サンクスギビング」
 何気にはじめての参加(笑)
@@ -310,20 +353,27 @@
     </div>
   </div>
 
-<!-- ■ 3記事目 ■ -->
+  <!-- ■ 3記事目 ■ -->
   <div class="entry">
-   <div class="title">
-  <div class="title-text">
-    <p class="date-line">
-      <span class="date">2025/11/27</span>
-      <span class="time">19:18</span>
-    </p>
-    <p class="title-main">自由自在にもちまろでぬい活！？</p>
-  </div>
-  <span class="arrow">▶</span>
-</div>
+    <div class="entry-header">
+      <div class="diary-thumb">
+        <img src="nikki_images/nikki_03.png" alt="自由自在にもちまろでぬい活！？のサムネ">
+      </div>
+
+      <div class="title">
+        <div class="title-text">
+          <p class="date-line">
+            <span class="date">2025/11/27</span>
+            <span class="time">19:18</span>
+          </p>
+          <p class="title-main">自由自在にもちまろでぬい活！？</p>
+        </div>
+        <span class="arrow">▶</span>
+      </div>
+    </div>
+
     <div class="content">
-    <img src="nikki_images/nikki_03.png" class="diary-img">
+      <img src="nikki_images/nikki_03.png" class="diary-img">
 トリくんから教えてもらった経度と緯度を指定して画像をAIに作ってもらうやつ。
 もちまろをぬいぐるみ指定したらガチガチにもちまろでテンション爆上がり↑
 かわいすぎんか。このぬいぐるみがほしい。
@@ -335,7 +385,6 @@
     </div>
   </div>
 
-  
 </div>
 
 <a href="index.html" class="back">← トップへもどる</a>
@@ -347,13 +396,12 @@
     });
   });
 </script>
+
 <footer class="footer">
   <div class="footer-inner">
     <p class="footer-title">ほわほわ庭</p>
 
-    <!-- SNSリンク -->
     <div class="footer-sns">
-      <!-- ★URLはあとでエイミ00用に差し替えればOK -->
       <a href="https://x.com/eimi00mochimaro" target="_blank" class="sns-x">
         <span class="sns-icon">𝕏</span>
         X
@@ -370,7 +418,6 @@
       </a>
     </div>
 
-    <!-- サイト内リンク（全ページ共通でOK） -->
     <p class="footer-links">
       <a href="index.html">トップ</a> ・
       <a href="world.html">もちまろのせかい</a> ・
