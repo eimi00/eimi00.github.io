@@ -9,9 +9,8 @@
       --bg: #fffaf4;
       --text: #4f4338;
       --muted: #9a8c7f;
-      --line: #e7d7c7;
-      --accent: #f2cfa9;
-      --accent-soft: #fff0da;
+      --line: #e9ddcf;
+      --accent-soft: #fff3de;
     }
 
     * {
@@ -38,9 +37,9 @@
     }
 
     .page {
-      max-width: 1040px;
+      max-width: 960px;
       margin: 0 auto;
-      padding: 24px 16px 64px;
+      padding: 32px 20px 80px;
     }
 
     /* ヘッダー */
@@ -54,6 +53,10 @@
       border-radius: 999px;
       background: #ffffff;
       border: 1px solid #f1e4d7;
+      position: sticky;
+      top: 10px;
+      z-index: 20;
+      backdrop-filter: blur(8px);
     }
 
     .logo-block {
@@ -71,6 +74,7 @@
       align-items: center;
       justify-content: center;
       font-size: 18px;
+      animation: float-soft 6s ease-in-out infinite;
     }
 
     .logo-text-main {
@@ -90,11 +94,12 @@
       background: #ffe4d9;
       color: #7d4b3e;
       letter-spacing: 0.08em;
+      animation: badge-pop 2s ease-in-out infinite;
     }
 
-    /* 共通 */
+    /* セクション共通 */
     section {
-      margin-bottom: 52px;
+      margin-bottom: 72px;
     }
 
     .section-label {
@@ -106,14 +111,16 @@
     }
 
     .section-title {
-      font-size: 18px;
+      font-size: 20px;
       margin: 0 0 8px;
+      letter-spacing: 0.04em;
     }
 
     .section-lead {
       font-size: 13px;
       color: var(--muted);
       margin: 0 0 18px;
+      max-width: 520px;
     }
 
     .divider {
@@ -123,7 +130,19 @@
       background: linear-gradient(90deg, transparent, var(--line), transparent);
     }
 
-    /* ヒーロー（表紙） */
+    /* フェードイン用（スクロール） */
+    .fade-section {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-section.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ヒーロー */
     .hero {
       text-align: center;
     }
@@ -132,7 +151,7 @@
       background: #ffffff;
       border-radius: 28px;
       border: 1px solid #ecd9c6;
-      padding: 24px 18px 22px;
+      padding: 28px 24px 26px;
     }
 
     .hero-label {
@@ -144,13 +163,13 @@
     }
 
     .hero-title {
-      font-size: 24px;
-      letter-spacing: 0.08em;
+      font-size: 26px;
+      letter-spacing: 0.1em;
       margin: 0 0 6px;
     }
 
     .hero-sub {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--muted);
       margin: 0 0 20px;
     }
@@ -161,14 +180,15 @@
       border: 1px solid var(--line);
       background: #fffaf4;
       padding: 14px;
-      margin-bottom: 14px;
+      margin-bottom: 18px;
+      animation: float-soft 8s ease-in-out infinite;
     }
 
     .hero-visual-inner {
       border-radius: 16px;
       border: 1px dashed var(--line);
       padding: 18px;
-      min-height: 160px;
+      min-height: 190px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -222,12 +242,18 @@
       border-radius: 999px;
       border: 1px solid var(--line);
       background: #ffffff;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
     }
 
     .index-chip span {
       font-size: 11px;
       color: var(--muted);
       margin-left: 4px;
+    }
+
+    .index-chip:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     }
 
     /* Story */
@@ -249,6 +275,7 @@
       border-radius: 22px;
       border: 1px solid var(--line);
       padding: 16px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .story-visual-inner {
@@ -264,6 +291,11 @@
       justify-content: center;
     }
 
+    .story-visual:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    }
+
     .story-text-block {
       font-size: 13px;
     }
@@ -276,7 +308,7 @@
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
+      gap: 16px;
     }
 
     @media (max-width: 800px) {
@@ -289,10 +321,11 @@
       background: #ffffff;
       border-radius: 16px;
       border: 1px solid var(--line);
-      padding: 8px 8px 10px;
+      padding: 10px 10px 12px;
       font-size: 11px;
       text-align: center;
       color: var(--muted);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .gallery-thumb {
@@ -301,10 +334,20 @@
       background: #fffaf4;
       padding: 12px;
       margin-bottom: 6px;
-      min-height: 72px;
+      min-height: 95px;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: transform 0.2s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    }
+
+    .gallery-item:hover .gallery-thumb {
+      transform: translateY(-1px);
     }
 
     /* About */
@@ -324,9 +367,10 @@
       background: #ffffff;
       border-radius: 18px;
       border: 1px solid var(--line);
-      padding: 14px 10px 12px;
+      padding: 16px 12px 14px;
       font-size: 12px;
       text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .char-icon {
@@ -339,17 +383,28 @@
       justify-content: center;
       background: var(--accent-soft);
       font-size: 26px;
+      transition: transform 0.25s ease;
     }
 
     .char-name {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
     .char-note {
       font-size: 11px;
       color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .char-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    }
+
+    .char-card:hover .char-icon {
+      transform: translateY(-2px) rotate(-4deg);
     }
 
     /* フッター */
@@ -358,6 +413,45 @@
       font-size: 11px;
       color: var(--muted);
       margin-top: 16px;
+    }
+
+    /* ふわっと動くアニメーション */
+    @keyframes float-soft {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes badge-pop {
+      0%, 80%, 100% { transform: translateY(0) scale(1); }
+      90% { transform: translateY(-1px) scale(1.05); }
+    }
+
+    /* スマホ細かい調整 */
+    @media (max-width: 720px) {
+      .page {
+        padding: 20px 14px 56px;
+      }
+
+      header {
+        padding: 8px 12px;
+      }
+
+      .hero-inner {
+        padding: 22px 14px 20px;
+      }
+
+      .hero-title {
+        font-size: 22px;
+      }
+
+      .section-title {
+        font-size: 18px;
+      }
+
+      .section-lead {
+        font-size: 12px;
+      }
     }
   </style>
 </head>
@@ -375,7 +469,7 @@
     </header>
 
     <!-- Hero / 表紙 -->
-    <section class="hero">
+    <section class="hero fade-section">
       <div class="hero-inner">
         <div class="hero-label">howa howa garden web magazine</div>
         <h1 class="hero-title">ほわほわ庭マガジン</h1>
@@ -396,8 +490,7 @@
           <span class="tag-chip"># もちまろ</span>
         </div>
         <div class="hero-note">
-          画像ができたら、このグレーの枠を<br />
-          そのまま1枚イラストに差し替えるだけで完成。
+          画像ができたら、この枠を1枚イラストに差し替えるだけで完成。
         </div>
 
         <div class="index-nav">
@@ -413,7 +506,7 @@
     </section>
 
     <!-- Story -->
-    <section id="story">
+    <section id="story" class="fade-section">
       <div class="section-label">story</div>
       <h2 class="section-title">ほわほわ庭の、ちいさな3日間</h2>
       <p class="section-lead">
@@ -440,12 +533,12 @@
     </section>
 
     <!-- Gallery -->
-    <section id="gallery">
+    <section id="gallery" class="fade-section">
       <div class="section-label">gallery</div>
       <h2 class="section-title">きょうのほわほわスナップ</h2>
       <p class="section-lead">
         スクショ・写真・1コマ絵日記などを、ぽんぽんと並べるイメージ。<br />
-        画像ができたら、下のグレーのエリアを順番に差し替えていく。
+        画像ができたら、下の枠を順番に差し替えていく。
       </p>
 
       <div class="gallery-grid">
@@ -489,7 +582,7 @@
     </section>
 
     <!-- About -->
-    <section id="about">
+    <section id="about" class="fade-section">
       <div class="section-label">about</div>
       <h2 class="section-title">ほわほわ庭のなかまたち</h2>
       <p class="section-lead">
@@ -525,11 +618,37 @@
       </div>
     </section>
 
-    <footer>
+    <footer class="fade-section">
       <div class="divider"></div>
       <div>howaniwa magazine vol.1 / created by エイミ00</div>
       <div>つづきは、気が向いたときに、ゆっくりと。</div>
     </footer>
   </div>
+
+  <script>
+    // スクロールに合わせてセクションふわっと表示
+    document.addEventListener("DOMContentLoaded", () => {
+      const sections = document.querySelectorAll(".fade-section");
+
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("in-view");
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.18 }
+        );
+
+        sections.forEach((sec) => io.observe(sec));
+      } else {
+        // 古い環境用のフォールバック（全部表示）
+        sections.forEach((sec) => sec.classList.add("in-view"));
+      }
+    });
+  </script>
 </body>
 </html>
