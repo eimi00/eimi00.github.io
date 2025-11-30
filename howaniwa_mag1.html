@@ -11,6 +11,7 @@
       --muted: #9a8c7f;
       --line: #e7d7c7;
       --accent: #f2cfa9;
+      --accent-soft: #fff0da;
     }
 
     * {
@@ -37,9 +38,9 @@
     }
 
     .page {
-      max-width: 960px;
+      max-width: 1040px;
       margin: 0 auto;
-      padding: 20px 16px 56px;
+      padding: 24px 16px 64px;
     }
 
     /* ヘッダー */
@@ -48,8 +49,8 @@
       justify-content: space-between;
       align-items: center;
       gap: 12px;
-      margin-bottom: 24px;
-      padding: 10px 14px;
+      margin-bottom: 32px;
+      padding: 10px 16px;
       border-radius: 999px;
       background: #ffffff;
       border: 1px solid #f1e4d7;
@@ -58,14 +59,14 @@
     .logo-block {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .logo-mark {
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
-      background: #fff4de;
+      background: var(--accent-soft);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -84,16 +85,24 @@
 
     .header-badge {
       font-size: 11px;
-      padding: 4px 10px;
+      padding: 4px 12px;
       border-radius: 999px;
       background: #ffe4d9;
-      color: #805247;
-      letter-spacing: 0.06em;
+      color: #7d4b3e;
+      letter-spacing: 0.08em;
     }
 
-    /* セクション共通 */
+    /* 共通 */
     section {
-      margin-bottom: 40px;
+      margin-bottom: 52px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
     }
 
     .section-title {
@@ -104,35 +113,26 @@
     .section-lead {
       font-size: 13px;
       color: var(--muted);
-      margin: 0 0 16px;
-    }
-
-    .section-label {
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 4px;
+      margin: 0 0 18px;
     }
 
     .divider {
       height: 1px;
+      max-width: 140px;
+      margin: 18px auto 0;
       background: linear-gradient(90deg, transparent, var(--line), transparent);
-      margin: 0 auto 16px;
-      max-width: 120px;
     }
 
-    /* ヒーロー */
+    /* ヒーロー（表紙） */
     .hero {
       text-align: center;
-      margin-bottom: 32px;
     }
 
-    .hero-main {
+    .hero-inner {
       background: #ffffff;
-      border-radius: 24px;
+      border-radius: 28px;
       border: 1px solid #ecd9c6;
-      padding: 20px 16px 18px;
+      padding: 24px 18px 22px;
     }
 
     .hero-label {
@@ -144,42 +144,50 @@
     }
 
     .hero-title {
-      font-size: 22px;
+      font-size: 24px;
       letter-spacing: 0.08em;
-      margin: 0 0 4px;
+      margin: 0 0 6px;
     }
 
     .hero-sub {
       font-size: 12px;
       color: var(--muted);
-      margin: 0 0 18px;
+      margin: 0 0 20px;
     }
 
-    .hero-visual {
-      border-radius: 18px;
-      border: 1px dashed var(--line);
+    .hero-visual-frame {
+      position: relative;
+      border-radius: 20px;
+      border: 1px solid var(--line);
       background: #fffaf4;
-      padding: 20px;
+      padding: 14px;
       margin-bottom: 14px;
     }
 
-    .hero-visual-placeholder {
+    .hero-visual-inner {
+      border-radius: 16px;
+      border: 1px dashed var(--line);
+      padding: 18px;
+      min-height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 12px;
       color: var(--muted);
-      line-height: 1.6;
+      text-align: center;
     }
 
-    .hero-tags {
+    .hero-tag-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
       justify-content: center;
+      gap: 6px;
       font-size: 11px;
       margin-bottom: 6px;
     }
 
     .tag-chip {
-      padding: 3px 9px;
+      padding: 3px 10px;
       border-radius: 999px;
       background: #fff4e4;
       border: 1px solid #f0d3b4;
@@ -191,16 +199,14 @@
       color: var(--muted);
     }
 
-    /* Index ナビ */
     .index-nav {
-      margin-top: 22px;
-      text-align: center;
+      margin-top: 20px;
     }
 
     .index-title {
-      font-size: 13px;
-      margin-bottom: 10px;
+      font-size: 12px;
       color: var(--muted);
+      margin-bottom: 10px;
     }
 
     .index-links {
@@ -212,7 +218,7 @@
 
     .index-chip {
       font-size: 12px;
-      padding: 6px 14px;
+      padding: 7px 16px;
       border-radius: 999px;
       border: 1px solid var(--line);
       background: #ffffff;
@@ -224,60 +230,64 @@
       margin-left: 4px;
     }
 
-    /* Story セクション（大きめビジュアル＋一言） */
+    /* Story */
     .story-grid {
       display: grid;
-      grid-template-columns: minmax(0,1.3fr) minmax(0,1fr);
-      gap: 16px;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 20px;
       align-items: center;
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 800px) {
       .story-grid {
-        grid-template-columns: minmax(0,1fr);
+        grid-template-columns: minmax(0, 1fr);
       }
     }
 
-    .story-main-visual {
+    .story-visual {
       background: #ffffff;
-      border-radius: 18px;
+      border-radius: 22px;
       border: 1px solid var(--line);
-      padding: 14px;
+      padding: 16px;
     }
 
-    .story-main-visual-inner {
-      border-radius: 14px;
+    .story-visual-inner {
+      border-radius: 16px;
       border: 1px dashed var(--line);
-      padding: 16px;
-      text-align: center;
+      padding: 18px;
+      min-height: 180px;
       font-size: 12px;
       color: var(--muted);
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .story-captions {
+    .story-text-block {
       font-size: 13px;
     }
 
-    .story-line {
-      margin-bottom: 12px;
+    .story-text-block p {
+      margin: 0 0 10px;
     }
 
-    /* Gallery っぽい並び（3カラム） */
+    /* Gallery */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 10px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 800px) {
       .gallery-grid {
-        grid-template-columns: repeat(2, minmax(0,1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
     .gallery-item {
       background: #ffffff;
-      border-radius: 14px;
+      border-radius: 16px;
       border: 1px solid var(--line);
       padding: 8px 8px 10px;
       font-size: 11px;
@@ -286,31 +296,35 @@
     }
 
     .gallery-thumb {
-      border-radius: 10px;
+      border-radius: 12px;
       border: 1px dashed #efddcc;
       background: #fffaf4;
       padding: 12px;
       margin-bottom: 6px;
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* About（キャラ紹介） */
+    /* About */
     .chars-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 10px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 800px) {
       .chars-grid {
-        grid-template-columns: minmax(0,1fr);
+        grid-template-columns: minmax(0, 1fr);
       }
     }
 
     .char-card {
       background: #ffffff;
-      border-radius: 16px;
+      border-radius: 18px;
       border: 1px solid var(--line);
-      padding: 12px 10px 12px;
+      padding: 14px 10px 12px;
       font-size: 12px;
       text-align: center;
     }
@@ -319,18 +333,18 @@
       width: 52px;
       height: 52px;
       border-radius: 50%;
-      margin: 0 auto 4px;
+      margin: 0 auto 6px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #fff4e4;
+      background: var(--accent-soft);
       font-size: 26px;
     }
 
     .char-name {
       font-size: 13px;
       font-weight: 600;
-      margin-bottom: 2px;
+      margin-bottom: 4px;
     }
 
     .char-note {
@@ -338,42 +352,12 @@
       color: var(--muted);
     }
 
-    /* 短いミニ4コマ・ボックス */
-    .mini-zine {
-      background: #ffffff;
-      border-radius: 18px;
-      border: 1px solid var(--line);
-      padding: 12px 12px 6px;
-      font-size: 12px;
-    }
-
-    .mini-zine-row {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0,1fr));
-      gap: 6px;
-      margin-top: 8px;
-    }
-
-    @media (max-width: 720px) {
-      .mini-zine-row {
-        grid-template-columns: repeat(2, minmax(0,1fr));
-      }
-    }
-
-    .mini-panel {
-      border-radius: 10px;
-      border: 1px dashed #efddcc;
-      background: #fffaf4;
-      padding: 6px;
-      font-size: 11px;
-    }
-
     /* フッター */
     footer {
       text-align: center;
       font-size: 11px;
       color: var(--muted);
-      margin-top: 24px;
+      margin-top: 16px;
     }
   </style>
 </head>
@@ -390,75 +374,67 @@
       <div class="header-badge">創刊号</div>
     </header>
 
-    <!-- ヒーロー（表紙） -->
+    <!-- Hero / 表紙 -->
     <section class="hero">
-      <div class="hero-main">
+      <div class="hero-inner">
         <div class="hero-label">howa howa garden web magazine</div>
         <h1 class="hero-title">ほわほわ庭マガジン</h1>
         <p class="hero-sub">vol.1 / もちまろと、やわらかい週末</p>
 
-        <div class="hero-visual">
+        <div class="hero-visual-frame">
           <!-- あとでイラストに差し替え -->
           <!-- 例: <img src="img/howaniwa_mag1_main.png" alt="ほわほわ庭マガジン 創刊号ビジュアル"> -->
-          <div class="hero-visual-placeholder">
-            ここに、創刊号のメインビジュアルを入れるイメージ。<br />
-            もちまろ・エイミ00・トリくんが、のんびり週末をすごしている絵など。
+          <div class="hero-visual-inner">
+            ここに、創刊号のメインビジュアルを1枚どんっと入れるイメージ。<br />
+            もちまろ・エイミ00・トリくんが、のんびり週末をすごしている様子など。
           </div>
         </div>
 
-        <div class="hero-tags">
+        <div class="hero-tag-row">
           <span class="tag-chip"># ほわほわ</span>
           <span class="tag-chip"># ゆるい週末</span>
           <span class="tag-chip"># もちまろ</span>
         </div>
         <div class="hero-note">
-          画像ができたら、上のグレーの枠を<br class="sp-only" />1枚のイラストにそのまま差し替えるだけでOK。
+          画像ができたら、このグレーの枠を<br />
+          そのまま1枚イラストに差し替えるだけで完成。
         </div>
-      </div>
 
-      <div class="index-nav">
-        <div class="divider"></div>
-        <div class="index-title">Index</div>
-        <div class="index-links">
-          <a href="#story" class="index-chip">Story<span>ほわ庭の週末</span></a>
-          <a href="#gallery" class="index-chip">Gallery<span>ちいさなスナップ</span></a>
-          <a href="#mini" class="index-chip">Mini ZINE<span>4コマとひみつ</span></a>
-          <a href="#about" class="index-chip">About<span>なかまたち</span></a>
+        <div class="index-nav">
+          <div class="index-title">Index</div>
+          <div class="index-links">
+            <a href="#story" class="index-chip">Story<span>ほわ庭の週末</span></a>
+            <a href="#gallery" class="index-chip">Gallery<span>ほわほわスナップ</span></a>
+            <a href="#about" class="index-chip">About<span>なかまたち</span></a>
+          </div>
         </div>
       </div>
+      <div class="divider"></div>
     </section>
 
     <!-- Story -->
     <section id="story">
       <div class="section-label">story</div>
-      <h2 class="section-title">ほわほわ庭の、のんびり3日間</h2>
+      <h2 class="section-title">ほわほわ庭の、ちいさな3日間</h2>
       <p class="section-lead">
         金曜日・土曜日・日曜日。<br />
-        それぞれの「すこしだけ特別な時間」を、1枚の絵で切りとったイメージ。
+        それぞれの「すこしだけ特別な時間」を、1枚のシーンとして切りとったイメージ。
       </p>
 
       <div class="story-grid">
-        <div class="story-main-visual">
-          <div class="story-main-visual-inner">
-            ここは大きめのイラスト用スペース。<br />
-            例：金曜の夜、あったかごはんとゲーム。<br />
-            土曜の昼、手帳を書いたり、おでかけしたり。<br />
-            日曜の午後、みんなでごろごろお昼寝タイム。
+        <div class="story-visual">
+          <!-- 後で1枚イラスト or 3コマ横並びイラストに差し替え -->
+          <div class="story-visual-inner">
+            ここに Story 用のイラストを配置。<br />
+            例：3コマ風に横に並んだ、金・土・日の様子。<br />
+            今は仮テキストなので、画像ができたら<br />
+            &lt;img&gt; に置き換えればOK。
           </div>
         </div>
-        <div class="story-captions">
-          <div class="story-line">
-            🍲 金曜日：<br />
-            あったかシチューや好きなごはんで、「今週もおつかれさま」の夜。
-          </div>
-          <div class="story-line">
-            ✨ 土曜日：<br />
-            手帳をひらいたり、すきなゲームをしたり。気ままな創作の日。
-          </div>
-          <div class="story-line">
-            😴 日曜日：<br />
-            何もしないをする日。お昼寝してもよし、ぼーっと外を眺めてもよし。
-          </div>
+        <div class="story-text-block">
+          <p>🍲 金曜日：<br>あったかごはんで「今週もおつかれさま」の夜。</p>
+          <p>✨ 土曜日：<br>手帳を書いたり、ゲームをしたり。気ままな創作の日。</p>
+          <p>😴 日曜日：<br>何もしないをする日。お昼寝したり、ぼーっと空をながめたり。</p>
         </div>
       </div>
     </section>
@@ -468,79 +444,46 @@
       <div class="section-label">gallery</div>
       <h2 class="section-title">きょうのほわほわスナップ</h2>
       <p class="section-lead">
-        スクショや写真、1コマ絵日記などをぽんぽんと並べるイメージ。<br />
-        画像ができてから、順番に差し替えていけばOK。
+        スクショ・写真・1コマ絵日記などを、ぽんぽんと並べるイメージ。<br />
+        画像ができたら、下のグレーのエリアを順番に差し替えていく。
       </p>
 
       <div class="gallery-grid">
         <div class="gallery-item">
           <div class="gallery-thumb">
-            ここに画像A<br />（例：手帳ページ）
+            画像A（例：手帳ページ）
           </div>
           手帳タイム
         </div>
         <div class="gallery-item">
           <div class="gallery-thumb">
-            ここに画像B<br />（例：ゲームの島）
+            画像B（例：ゲームの島）
           </div>
-          ゲームの島さんぽ
+          島さんぽ
         </div>
         <div class="gallery-item">
           <div class="gallery-thumb">
-            ここに画像C<br />（例：お茶とおやつ）
+            画像C（例：お茶とおやつ）
           </div>
-          おやつとひと休み
+          おやつ休憩
         </div>
         <div class="gallery-item">
           <div class="gallery-thumb">
-            ここに画像D
+            画像D
           </div>
-          なんでもメモ
+          今日のメモ
         </div>
         <div class="gallery-item">
           <div class="gallery-thumb">
-            ここに画像E
+            画像E
           </div>
           もちまろ落書き
         </div>
         <div class="gallery-item">
           <div class="gallery-thumb">
-            ここに画像F
+            画像F
           </div>
-          今日のきろく
-        </div>
-      </div>
-    </section>
-
-    <!-- Mini ZINE（4コマとか、ちいさなテキスト） -->
-    <section id="mini">
-      <div class="section-label">mini zine</div>
-      <h2 class="section-title">1ページだけのちいさなZINE</h2>
-      <p class="section-lead">
-        4コマまんがや、ちょっとしたひとことを、付箋みたいに並べるコーナー。
-      </p>
-
-      <div class="mini-zine">
-        <div style="font-size:11px; color:var(--muted);">
-          ※ とりあえずサンプルの文章を入れてあるので、あとから自由に書きかえてね。
-        </div>
-        <div class="mini-zine-row">
-          <div class="mini-panel">
-            ① 創刊号つくるぞ〜と決めた日。<br />
-            もちまろは、まだ半分ねむそう。
-          </div>
-          <div class="mini-panel">
-            ② 紙にするか、Webにするかでしばし悩む。<br />
-            「まずは軽く始められるほうで」とトリくん。
-          </div>
-          <div class="mini-panel">
-            ③ ほわほわ庭マガジン、略して「ほわマガ」。<br />
-            音の感じが、けっこう気に入っている。
-          </div>
-          <div class="mini-panel">
-            ④ 1ページでもできたら、それだけで100点。<br />
-            そんな気持ちで、きょうはおしまい。
-          </div>
+          なんでもスナップ
         </div>
       </div>
     </section>
@@ -550,7 +493,8 @@
       <div class="section-label">about</div>
       <h2 class="section-title">ほわほわ庭のなかまたち</h2>
       <p class="section-lead">
-        キャラクター紹介も、短い文章だけにして、ぱっと見で雰囲気が伝わる感じに。
+        キャラクター紹介は、ひとりにつき一言か二言。<br />
+        パッと見で「どんな子か」が伝わるくらいで。
       </p>
 
       <div class="chars-grid">
@@ -559,7 +503,7 @@
           <div class="char-name">もちまろ</div>
           <div class="char-note">
             まあるくて、のんびり。<br />
-            みたらし団子があると、すこしだけ行動がはやい。
+            みたらし団子があると、ちょっとだけ行動がはやい。
           </div>
         </div>
         <div class="char-card">
@@ -567,14 +511,14 @@
           <div class="char-name">エイミ00</div>
           <div class="char-note">
             自称まほうつかい。<br />
-            その日やりたいことを、ゆるく集めて暮らしている人。
+            その日「やりたい」と思ったことを、ゆるく集めて暮らしている人。
           </div>
         </div>
         <div class="char-card">
           <div class="char-icon">🐦</div>
           <div class="char-name">トリくん</div>
           <div class="char-note">
-            ちょっと背の高い、アドバイザー役。<br />
+            すこし背の高い、アドバイザー役。<br />
             「きょうは休んでもいいんじゃない？」とよく言う。
           </div>
         </div>
@@ -584,7 +528,7 @@
     <footer>
       <div class="divider"></div>
       <div>howaniwa magazine vol.1 / created by エイミ00</div>
-      <div>つづきは、気が向いたときにゆっくり。</div>
+      <div>つづきは、気が向いたときに、ゆっくりと。</div>
     </footer>
   </div>
 </body>
