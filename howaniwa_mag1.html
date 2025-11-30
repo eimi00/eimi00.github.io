@@ -24,6 +24,8 @@
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
+      position: relative;
+      overflow-x: hidden;
     }
 
     img {
@@ -40,9 +42,122 @@
       max-width: 960px;
       margin: 0 auto;
       padding: 32px 20px 80px;
+      position: relative;
+      z-index: 2;
     }
 
-    /* ヘッダー */
+    /* =====================
+       ローディング画面
+    ====================== */
+
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: #fff9f1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 999;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+
+    #loader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-mark {
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid #f0d1b8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      animation: float-soft 3s ease-in-out infinite;
+    }
+
+    .loader-text-main {
+      margin-top: 14px;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .loader-text-sub {
+      margin-top: 4px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .loader-dots {
+      margin-top: 12px;
+      display: flex;
+      gap: 6px;
+    }
+
+    .loader-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #f0cbb5;
+      animation: dot-bounce 1.2s infinite;
+    }
+
+    .loader-dot:nth-child(2) { animation-delay: 0.15s; }
+    .loader-dot:nth-child(3) { animation-delay: 0.3s; }
+
+    /* =====================
+       上部の雲バナー
+    ====================== */
+
+    .sky-clouds {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120%;
+      height: 120px;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .sky-clouds-inner {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 10% 60%, #ffffff 0, #ffffff 35px, transparent 36px),
+        radial-gradient(circle at 25% 40%, #ffffff 0, #ffffff 40px, transparent 41px),
+        radial-gradient(circle at 45% 55%, #ffffff 0, #ffffff 45px, transparent 46px),
+        radial-gradient(circle at 65% 45%, #ffffff 0, #ffffff 38px, transparent 39px),
+        radial-gradient(circle at 82% 60%, #ffffff 0, #ffffff 34px, transparent 35px);
+      opacity: 0.92;
+      animation: clouds-drift 40s linear infinite;
+    }
+
+    .sky-clouds-inner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 5% 55%, #ffffff 0, #ffffff 30px, transparent 31px),
+        radial-gradient(circle at 30% 65%, #ffffff 0, #ffffff 36px, transparent 37px),
+        radial-gradient(circle at 55% 40%, #ffffff 0, #ffffff 32px, transparent 33px),
+        radial-gradient(circle at 78% 52%, #ffffff 0, #ffffff 40px, transparent 41px);
+      opacity: 0.6;
+      animation: clouds-drift-reverse 55s linear infinite;
+    }
+
+    /* =====================
+       ヘッダー
+    ====================== */
+
     header {
       display: flex;
       justify-content: space-between;
@@ -55,8 +170,9 @@
       border: 1px solid #f1e4d7;
       position: sticky;
       top: 10px;
-      z-index: 20;
+      z-index: 10;
       backdrop-filter: blur(8px);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
     }
 
     .logo-block {
@@ -94,10 +210,13 @@
       background: #ffe4d9;
       color: #7d4b3e;
       letter-spacing: 0.08em;
-      animation: badge-pop 2s ease-in-out infinite;
+      animation: badge-pop 2.6s ease-in-out infinite;
     }
 
-    /* セクション共通 */
+    /* =====================
+       セクション共通 & フェード
+    ====================== */
+
     section {
       margin-bottom: 72px;
     }
@@ -130,7 +249,6 @@
       background: linear-gradient(90deg, transparent, var(--line), transparent);
     }
 
-    /* フェードイン用（スクロール） */
     .fade-section {
       opacity: 0;
       transform: translateY(24px);
@@ -142,7 +260,10 @@
       transform: translateY(0);
     }
 
-    /* ヒーロー */
+    /* =====================
+       Hero / 表紙
+    ====================== */
+
     .hero {
       text-align: center;
     }
@@ -253,10 +374,13 @@
 
     .index-chip:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     }
 
-    /* Story */
+    /* =====================
+       Story
+    ====================== */
+
     .story-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
@@ -293,7 +417,7 @@
 
     .story-visual:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
     }
 
     .story-text-block {
@@ -304,7 +428,10 @@
       margin: 0 0 10px;
     }
 
-    /* Gallery */
+    /* =====================
+       Gallery
+    ====================== */
+
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -343,14 +470,17 @@
 
     .gallery-item:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
     }
 
     .gallery-item:hover .gallery-thumb {
       transform: translateY(-1px);
     }
 
-    /* About */
+    /* =====================
+       About
+    ====================== */
+
     .chars-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -400,14 +530,17 @@
 
     .char-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
     }
 
     .char-card:hover .char-icon {
       transform: translateY(-2px) rotate(-4deg);
     }
 
-    /* フッター */
+    /* =====================
+       フッター
+    ====================== */
+
     footer {
       text-align: center;
       font-size: 11px;
@@ -415,7 +548,10 @@
       margin-top: 16px;
     }
 
-    /* ふわっと動くアニメーション */
+    /* =====================
+       アニメーション
+    ====================== */
+
     @keyframes float-soft {
       0% { transform: translateY(0); }
       50% { transform: translateY(-4px); }
@@ -427,7 +563,25 @@
       90% { transform: translateY(-1px) scale(1.05); }
     }
 
-    /* スマホ細かい調整 */
+    @keyframes clouds-drift {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-80px); }
+    }
+
+    @keyframes clouds-drift-reverse {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(80px); }
+    }
+
+    @keyframes dot-bounce {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+      30% { transform: translateY(-4px); opacity: 1; }
+    }
+
+    /* =====================
+       スマホ調整
+    ====================== */
+
     @media (max-width: 720px) {
       .page {
         padding: 20px 14px 56px;
@@ -452,10 +606,31 @@
       .section-lead {
         font-size: 12px;
       }
+
+      .sky-clouds {
+        height: 90px;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- ローディング画面 -->
+  <div id="loader">
+    <div class="loader-mark">🍡</div>
+    <div class="loader-text-main">HOWA HOWA LOADING</div>
+    <div class="loader-text-sub">ほわっと読み込み中です</div>
+    <div class="loader-dots">
+      <div class="loader-dot"></div>
+      <div class="loader-dot"></div>
+      <div class="loader-dot"></div>
+    </div>
+  </div>
+
+  <!-- 上部の雲レイヤー -->
+  <div class="sky-clouds">
+    <div class="sky-clouds-inner"></div>
+  </div>
+
   <div class="page">
     <header>
       <div class="logo-block">
@@ -645,9 +820,18 @@
 
         sections.forEach((sec) => io.observe(sec));
       } else {
-        // 古い環境用のフォールバック（全部表示）
         sections.forEach((sec) => sec.classList.add("in-view"));
       }
+    });
+
+    // ローディング画面制御
+    window.addEventListener("load", () => {
+      const loader = document.getElementById("loader");
+      if (!loader) return;
+      // ちょっとだけ“間”をおいてから消えるように
+      setTimeout(() => {
+        loader.classList.add("hide");
+      }, 600);
     });
   </script>
 </body>
