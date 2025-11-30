@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
-      --bg: #fffaf4;
+      --bg: #fffaf4; /* ほわ庭の色味に近い淡クリーム */
       --text: #4f4338;
       --muted: #9a8c7f;
       --line: #e9ddcf;
@@ -19,10 +19,11 @@
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont,
-        "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      padding: 0;
       background: var(--bg);
       color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont,
+        "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
       line-height: 1.7;
       position: relative;
       overflow-x: hidden;
@@ -46,14 +47,11 @@
       z-index: 2;
     }
 
-    /* =====================
-       ローディング画面
-    ====================== */
-
+    /* — ローディング画面 — */
     #loader {
       position: fixed;
       inset: 0;
-      background: #fff9f1;
+      background: var(--bg);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -71,7 +69,7 @@
       width: 84px;
       height: 84px;
       border-radius: 50%;
-      background: #fff;
+      background: #ffffff;
       border: 2px solid #f0d1b8;
       display: flex;
       align-items: center;
@@ -108,20 +106,16 @@
       background: #f0cbb5;
       animation: dot-bounce 1.2s infinite;
     }
-
     .loader-dot:nth-child(2) { animation-delay: 0.15s; }
     .loader-dot:nth-child(3) { animation-delay: 0.3s; }
 
-    /* =====================
-       上部の雲バナー
-    ====================== */
-
+    /* — 背景雲アニメーション — */
     .sky-clouds {
       position: fixed;
       top: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 120%;
+      width: 130%;
       height: 120px;
       pointer-events: none;
       z-index: 1;
@@ -133,12 +127,14 @@
       inset: 0;
       background:
         radial-gradient(circle at 10% 60%, #ffffff 0, #ffffff 35px, transparent 36px),
-        radial-gradient(circle at 25% 40%, #ffffff 0, #ffffff 40px, transparent 41px),
-        radial-gradient(circle at 45% 55%, #ffffff 0, #ffffff 45px, transparent 46px),
-        radial-gradient(circle at 65% 45%, #ffffff 0, #ffffff 38px, transparent 39px),
-        radial-gradient(circle at 82% 60%, #ffffff 0, #ffffff 34px, transparent 35px);
-      opacity: 0.92;
-      animation: clouds-drift 40s linear infinite;
+        radial-gradient(circle at 35% 40%, #ffffff 0, #ffffff 40px, transparent 41px),
+        radial-gradient(circle at 60% 55%, #ffffff 0, #ffffff 45px, transparent 46px),
+        radial-gradient(circle at 85% 45%, #ffffff 0, #ffffff 38px, transparent 39px);
+      background-repeat: repeat-x;
+      background-size: 400px 120px;
+      opacity: 0.95;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.04));
+      animation: clouds-drift 22s linear infinite;
     }
 
     .sky-clouds-inner::after {
@@ -146,18 +142,16 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 5% 55%, #ffffff 0, #ffffff 30px, transparent 31px),
-        radial-gradient(circle at 30% 65%, #ffffff 0, #ffffff 36px, transparent 37px),
-        radial-gradient(circle at 55% 40%, #ffffff 0, #ffffff 32px, transparent 33px),
-        radial-gradient(circle at 78% 52%, #ffffff 0, #ffffff 40px, transparent 41px);
+        radial-gradient(circle at 20% 55%, #ffffff 0, #ffffff 28px, transparent 29px),
+        radial-gradient(circle at 55% 65%, #ffffff 0, #ffffff 32px, transparent 33px),
+        radial-gradient(circle at 80% 40%, #ffffff 0, #ffffff 30px, transparent 31px);
+      background-repeat: repeat-x;
+      background-size: 360px 120px;
       opacity: 0.6;
-      animation: clouds-drift-reverse 55s linear infinite;
+      animation: clouds-drift-reverse 30s linear infinite;
     }
 
-    /* =====================
-       ヘッダー
-    ====================== */
-
+    /* その他基本デザイン (前回までの) */
     header {
       display: flex;
       justify-content: space-between;
@@ -174,13 +168,11 @@
       backdrop-filter: blur(8px);
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
     }
-
     .logo-block {
       display: flex;
       align-items: center;
       gap: 10px;
     }
-
     .logo-mark {
       width: 32px;
       height: 32px;
@@ -192,17 +184,14 @@
       font-size: 18px;
       animation: float-soft 6s ease-in-out infinite;
     }
-
     .logo-text-main {
       font-size: 14px;
       font-weight: 600;
     }
-
     .logo-text-sub {
       font-size: 11px;
       color: var(--muted);
     }
-
     .header-badge {
       font-size: 11px;
       padding: 4px 12px;
@@ -212,15 +201,9 @@
       letter-spacing: 0.08em;
       animation: badge-pop 2.6s ease-in-out infinite;
     }
-
-    /* =====================
-       セクション共通 & フェード
-    ====================== */
-
     section {
       margin-bottom: 72px;
     }
-
     .section-label {
       font-size: 11px;
       letter-spacing: 0.18em;
@@ -228,83 +211,51 @@
       color: var(--muted);
       margin-bottom: 6px;
     }
-
     .section-title {
       font-size: 20px;
       margin: 0 0 8px;
       letter-spacing: 0.04em;
     }
-
     .section-lead {
       font-size: 13px;
       color: var(--muted);
       margin: 0 0 18px;
       max-width: 520px;
     }
-
     .divider {
       height: 1px;
       max-width: 140px;
       margin: 18px auto 0;
       background: linear-gradient(90deg, transparent, var(--line), transparent);
     }
-
     .fade-section {
       opacity: 0;
       transform: translateY(24px);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
-
     .fade-section.in-view {
       opacity: 1;
       transform: translateY(0);
     }
-
-    /* =====================
-       Hero / 表紙
-    ====================== */
-
-    .hero {
-      text-align: center;
-    }
-
+    .hero { text-align: center; }
     .hero-inner {
       background: #ffffff;
       border-radius: 28px;
       border: 1px solid #ecd9c6;
       padding: 28px 24px 26px;
     }
-
-    .hero-label {
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-
-    .hero-title {
-      font-size: 26px;
-      letter-spacing: 0.1em;
-      margin: 0 0 6px;
-    }
-
-    .hero-sub {
-      font-size: 13px;
-      color: var(--muted);
-      margin: 0 0 20px;
-    }
-
+    .hero-label { font-size: 11px; color: var(--muted); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 4px; }
+    .hero-title { font-size: 26px; letter-spacing: 0.1em; margin: 0 0 6px; }
+    .hero-sub { font-size: 13px; color: var(--muted); margin: 0 0 20px; }
     .hero-visual-frame {
       position: relative;
       border-radius: 20px;
       border: 1px solid var(--line);
-      background: #fffaf4;
+      background: var(--bg);
       padding: 14px;
       margin-bottom: 18px;
       animation: float-soft 8s ease-in-out infinite;
     }
-
     .hero-visual-inner {
       border-radius: 16px;
       border: 1px dashed var(--line);
@@ -317,7 +268,6 @@
       color: var(--muted);
       text-align: center;
     }
-
     .hero-tag-row {
       display: flex;
       flex-wrap: wrap;
@@ -326,7 +276,6 @@
       font-size: 11px;
       margin-bottom: 6px;
     }
-
     .tag-chip {
       padding: 3px 10px;
       border-radius: 999px;
@@ -334,29 +283,10 @@
       border: 1px solid #f0d3b4;
       color: #8c6641;
     }
-
-    .hero-note {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .index-nav {
-      margin-top: 20px;
-    }
-
-    .index-title {
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-
-    .index-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-    }
-
+    .hero-note { font-size: 11px; color: var(--muted); }
+    .index-nav { margin-top: 20px; }
+    .index-title { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+    .index-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
     .index-chip {
       font-size: 12px;
       padding: 7px 16px;
@@ -365,35 +295,22 @@
       background: #ffffff;
       transition: transform 0.18s ease, box-shadow 0.18s ease;
     }
-
-    .index-chip span {
-      font-size: 11px;
-      color: var(--muted);
-      margin-left: 4px;
-    }
-
+    .index-chip span { font-size: 11px; color: var(--muted); margin-left: 4px; }
     .index-chip:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     }
-
-    /* =====================
-       Story
-    ====================== */
-
     .story-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
       gap: 20px;
       align-items: center;
     }
-
     @media (max-width: 800px) {
       .story-grid {
         grid-template-columns: minmax(0, 1fr);
       }
     }
-
     .story-visual {
       background: #ffffff;
       border-radius: 22px;
@@ -401,7 +318,6 @@
       padding: 16px;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-
     .story-visual-inner {
       border-radius: 16px;
       border: 1px dashed var(--line);
@@ -414,36 +330,24 @@
       align-items: center;
       justify-content: center;
     }
-
     .story-visual:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
     }
-
     .story-text-block {
       font-size: 13px;
     }
-
-    .story-text-block p {
-      margin: 0 0 10px;
-    }
-
-    /* =====================
-       Gallery
-    ====================== */
-
+    .story-text-block p { margin: 0 0 10px; }
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
     }
-
     @media (max-width: 800px) {
       .gallery-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
-
     .gallery-item {
       background: #ffffff;
       border-radius: 16px;
@@ -454,11 +358,10 @@
       color: var(--muted);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-
     .gallery-thumb {
       border-radius: 12px;
       border: 1px dashed #efddcc;
-      background: #fffaf4;
+      background: var(--bg);
       padding: 12px;
       margin-bottom: 6px;
       min-height: 95px;
@@ -467,32 +370,21 @@
       justify-content: center;
       transition: transform 0.2s ease;
     }
-
     .gallery-item:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
     }
-
     .gallery-item:hover .gallery-thumb {
       transform: translateY(-1px);
     }
-
-    /* =====================
-       About
-    ====================== */
-
     .chars-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
     }
-
     @media (max-width: 800px) {
-      .chars-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .chars-grid { grid-template-columns: minmax(0, 1fr); }
     }
-
     .char-card {
       background: #ffffff;
       border-radius: 18px;
@@ -502,7 +394,6 @@
       text-align: center;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-
     .char-icon {
       width: 52px;
       height: 52px;
@@ -515,110 +406,64 @@
       font-size: 26px;
       transition: transform 0.25s ease;
     }
-
     .char-name {
       font-size: 14px;
       font-weight: 600;
       margin-bottom: 6px;
     }
-
     .char-note {
       font-size: 11px;
       color: var(--muted);
       line-height: 1.8;
     }
-
     .char-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
     }
-
     .char-card:hover .char-icon {
       transform: translateY(-2px) rotate(-4deg);
     }
-
-    /* =====================
-       フッター
-    ====================== */
-
-    footer {
-      text-align: center;
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 16px;
-    }
-
-    /* =====================
-       アニメーション
-    ====================== */
+    footer { text-align: center; font-size: 11px; color: var(--muted); margin-top: 16px; }
 
     @keyframes float-soft {
       0% { transform: translateY(0); }
       50% { transform: translateY(-4px); }
       100% { transform: translateY(0); }
     }
-
     @keyframes badge-pop {
       0%, 80%, 100% { transform: translateY(0) scale(1); }
       90% { transform: translateY(-1px) scale(1.05); }
     }
-
     @keyframes clouds-drift {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-80px); }
+      0%   { background-position: 0 0; }
+      100% { background-position: -400px 0; }
     }
-
     @keyframes clouds-drift-reverse {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(80px); }
+      0%   { background-position: 0 0; }
+      100% { background-position: 400px 0; }
     }
-
     @keyframes dot-bounce {
       0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
       30% { transform: translateY(-4px); opacity: 1; }
     }
 
-    /* =====================
-       スマホ調整
-    ====================== */
-
     @media (max-width: 720px) {
-      .page {
-        padding: 20px 14px 56px;
-      }
-
-      header {
-        padding: 8px 12px;
-      }
-
-      .hero-inner {
-        padding: 22px 14px 20px;
-      }
-
-      .hero-title {
-        font-size: 22px;
-      }
-
-      .section-title {
-        font-size: 18px;
-      }
-
-      .section-lead {
-        font-size: 12px;
-      }
-
-      .sky-clouds {
-        height: 90px;
-      }
+      .page { padding: 20px 14px 56px; }
+      header { padding: 8px 12px; }
+      .hero-inner { padding: 22px 14px 20px; }
+      .hero-title { font-size: 22px; }
+      .section-title { font-size: 18px; }
+      .section-lead { font-size: 12px; }
+      .sky-clouds { height: 90px; }
     }
   </style>
 </head>
 <body>
   <!-- ローディング画面 -->
   <div id="loader">
-    <div class="loader-mark">🍡</div>
+    <div class="loader-mark">🌱</div>
     <div class="loader-text-main">HOWA HOWA LOADING</div>
-    <div class="loader-text-sub">ほわっと読み込み中です</div>
+    <div class="loader-text-sub">ほわっと読み込み中…</div>
     <div class="loader-dots">
       <div class="loader-dot"></div>
       <div class="loader-dot"></div>
@@ -626,7 +471,7 @@
     </div>
   </div>
 
-  <!-- 上部の雲レイヤー -->
+  <!-- 雲アニメーション背景 -->
   <div class="sky-clouds">
     <div class="sky-clouds-inner"></div>
   </div>
@@ -643,7 +488,7 @@
       <div class="header-badge">創刊号</div>
     </header>
 
-    <!-- Hero / 表紙 -->
+    <!-- Hero -->
     <section class="hero fade-section">
       <div class="hero-inner">
         <div class="hero-label">howa howa garden web magazine</div>
@@ -651,11 +496,8 @@
         <p class="hero-sub">vol.1 / もちまろと、やわらかい週末</p>
 
         <div class="hero-visual-frame">
-          <!-- あとでイラストに差し替え -->
-          <!-- 例: <img src="img/howaniwa_mag1_main.png" alt="ほわほわ庭マガジン 創刊号ビジュアル"> -->
           <div class="hero-visual-inner">
-            ここに、創刊号のメインビジュアルを1枚どんっと入れるイメージ。<br />
-            もちまろ・エイミ00・トリくんが、のんびり週末をすごしている様子など。
+            <!-- ここにメインビジュアルの画像を入れてね -->
           </div>
         </div>
 
@@ -664,15 +506,14 @@
           <span class="tag-chip"># ゆるい週末</span>
           <span class="tag-chip"># もちまろ</span>
         </div>
-        <div class="hero-note">
-          画像ができたら、この枠を1枚イラストに差し替えるだけで完成。
-        </div>
+
+        <div class="hero-note">画像ができたら、ここに差し替えてね。</div>
 
         <div class="index-nav">
           <div class="index-title">Index</div>
           <div class="index-links">
-            <a href="#story" class="index-chip">Story<span>ほわ庭の週末</span></a>
-            <a href="#gallery" class="index-chip">Gallery<span>ほわほわスナップ</span></a>
+            <a href="#story" class="index-chip">Story<span>週末の記録</span></a>
+            <a href="#gallery" class="index-chip">Gallery<span>スナップ</span></a>
             <a href="#about" class="index-chip">About<span>なかまたち</span></a>
           </div>
         </div>
@@ -684,25 +525,18 @@
     <section id="story" class="fade-section">
       <div class="section-label">story</div>
       <h2 class="section-title">ほわほわ庭の、ちいさな3日間</h2>
-      <p class="section-lead">
-        金曜日・土曜日・日曜日。<br />
-        それぞれの「すこしだけ特別な時間」を、1枚のシーンとして切りとったイメージ。
-      </p>
+      <p class="section-lead">金〜日曜日の、すこしだけ特別な時間を一枚の絵で。</p>
 
       <div class="story-grid">
         <div class="story-visual">
-          <!-- 後で1枚イラスト or 3コマ横並びイラストに差し替え -->
           <div class="story-visual-inner">
-            ここに Story 用のイラストを配置。<br />
-            例：3コマ風に横に並んだ、金・土・日の様子。<br />
-            今は仮テキストなので、画像ができたら<br />
-            &lt;img&gt; に置き換えればOK。
+            <!-- Story用イラストをここに -->
           </div>
         </div>
         <div class="story-text-block">
-          <p>🍲 金曜日：<br>あったかごはんで「今週もおつかれさま」の夜。</p>
-          <p>✨ 土曜日：<br>手帳を書いたり、ゲームをしたり。気ままな創作の日。</p>
-          <p>😴 日曜日：<br>何もしないをする日。お昼寝したり、ぼーっと空をながめたり。</p>
+          <p>🍲 金曜日：あったかごはんで、「今週もおつかれさま」。</p>
+          <p>✨ 土曜日：手帳を書いたり、ゲームしたり。気ままな創作の日。</p>
+          <p>😴 日曜日：何もしないをする日。お昼寝してもよし、ぼーっと空をながめてもよし。</p>
         </div>
       </div>
     </section>
@@ -711,48 +545,13 @@
     <section id="gallery" class="fade-section">
       <div class="section-label">gallery</div>
       <h2 class="section-title">きょうのほわほわスナップ</h2>
-      <p class="section-lead">
-        スクショ・写真・1コマ絵日記などを、ぽんぽんと並べるイメージ。<br />
-        画像ができたら、下の枠を順番に差し替えていく。
-      </p>
+      <p class="section-lead">スクショ・写真・1コマ絵日記などを並べるギャラリー。</p>
 
       <div class="gallery-grid">
-        <div class="gallery-item">
-          <div class="gallery-thumb">
-            画像A（例：手帳ページ）
-          </div>
-          手帳タイム
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-thumb">
-            画像B（例：ゲームの島）
-          </div>
-          島さんぽ
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-thumb">
-            画像C（例：お茶とおやつ）
-          </div>
-          おやつ休憩
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-thumb">
-            画像D
-          </div>
-          今日のメモ
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-thumb">
-            画像E
-          </div>
-          もちまろ落書き
-        </div>
-        <div class="gallery-item">
-          <div class="gallery-thumb">
-            画像F
-          </div>
-          なんでもスナップ
-        </div>
+        <!-- 画像ができたら .gallery-thumb 内に <img> を入れてね -->
+        <div class="gallery-item"><div class="gallery-thumb">画像A</div>手帳タイム</div>
+        <div class="gallery-item"><div class="gallery-thumb">画像B</div>ゲームの島</div>
+        <div as="gallery-item"><div class="gallery-thumb">画像C</div>おやつとひと休み</div>
       </div>
     </section>
 
@@ -760,78 +559,45 @@
     <section id="about" class="fade-section">
       <div class="section-label">about</div>
       <h2 class="section-title">ほわほわ庭のなかまたち</h2>
-      <p class="section-lead">
-        キャラクター紹介は、ひとりにつき一言か二言。<br />
-        パッと見で「どんな子か」が伝わるくらいで。
-      </p>
+      <p class="section-lead">キャラクター紹介は、ひとり1〜2行で。</p>
 
       <div class="chars-grid">
-        <div class="char-card">
-          <div class="char-icon">🍡</div>
-          <div class="char-name">もちまろ</div>
-          <div class="char-note">
-            まあるくて、のんびり。<br />
-            みたらし団子があると、ちょっとだけ行動がはやい。
-          </div>
-        </div>
-        <div class="char-card">
-          <div class="char-icon">🧙‍♀️</div>
-          <div class="char-name">エイミ00</div>
-          <div class="char-note">
-            自称まほうつかい。<br />
-            その日「やりたい」と思ったことを、ゆるく集めて暮らしている人。
-          </div>
-        </div>
-        <div class="char-card">
-          <div class="char-icon">🐦</div>
-          <div class="char-name">トリくん</div>
-          <div class="char-note">
-            すこし背の高い、アドバイザー役。<br />
-            「きょうは休んでもいいんじゃない？」とよく言う。
-          </div>
-        </div>
+        <div class="char-card"><div class="char-icon">🍡</div><div class="char-name">もちまろ</div><div class="char-note">まあるくて のんびり。みたらし団子があるとちょっと動きが早い。</div></div>
+        <div class="char-card"><div class="char-icon">🧙‍♀️</div><div class="char-name">エイミ00</div><div class="char-note">まほうつかい。ゆるくてたのしいことがすき。</div></div>
+        <div class="char-card"><div class="char-icon">🐦</div><div class="char-name">トリくん</div><div class="char-note">ちょっと高いところから見守る、相談役。</div></div>
       </div>
     </section>
 
     <footer class="fade-section">
       <div class="divider"></div>
       <div>howaniwa magazine vol.1 / created by エイミ00</div>
-      <div>つづきは、気が向いたときに、ゆっくりと。</div>
+      <div>つづきは気が向いたときに、ゆっくりと。</div>
     </footer>
   </div>
 
   <script>
-    // スクロールに合わせてセクションふわっと表示
+    // フェードイン⋅スクロール表示用
     document.addEventListener("DOMContentLoaded", () => {
-      const sections = document.querySelectorAll(".fade-section");
-
+      const secs = document.querySelectorAll(".fade-section");
       if ("IntersectionObserver" in window) {
-        const io = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("in-view");
-                io.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.18 }
-        );
-
-        sections.forEach((sec) => io.observe(sec));
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            if (e.isIntersecting) {
+              e.target.classList.add("in-view");
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.2 });
+        secs.forEach(s => io.observe(s));
       } else {
-        sections.forEach((sec) => sec.classList.add("in-view"));
+        secs.forEach(s => s.classList.add("in-view"));
       }
     });
 
-    // ローディング画面制御
+    // ローディング消す
     window.addEventListener("load", () => {
       const loader = document.getElementById("loader");
-      if (!loader) return;
-      // ちょっとだけ“間”をおいてから消えるように
-      setTimeout(() => {
-        loader.classList.add("hide");
-      }, 600);
+      loader.classList.add("hide");
     });
   </script>
 </body>
