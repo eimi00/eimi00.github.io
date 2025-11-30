@@ -684,6 +684,171 @@
       background: #e1c78c;
     }
 
+/* =========================
+   ほわマガ用 かわいい見た目チューニング
+   （既存のスタイルの下に追記してOK）
+========================= */
+
+/* 背景をもっとやさしい色に */
+body {
+  background: radial-gradient(circle at top, #fffaf9 0, #fff3e9 60%, #ffe7f2 100%);
+}
+
+/* 全体の余白をちょっと広めにして“余裕感”を出す */
+.page {
+  padding-top: 32px;
+  padding-bottom: 72px;
+}
+
+/* ヘッダーをもっと“タグ”っぽく */
+header {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 6px 18px rgba(255, 180, 210, 0.35);
+}
+
+.logo-circle {
+  background: radial-gradient(circle at 30% 30%, #fff, #ffe1f0);
+}
+
+/* カード系を“紙のZINEっぽく”ふわっと */
+.card,
+.subcard,
+.comic-frame,
+.bonus-item,
+.map-placeholder {
+  border-radius: 22px;
+  border: 1.5px solid #ffe1ec;
+  background: #fffdfb;
+  box-shadow: 0 10px 24px rgba(255, 184, 204, 0.32);
+}
+
+/* 表紙カードに“マステっぽい”飾り */
+.hero-card {
+  position: relative;
+  background: radial-gradient(circle at top, #fff6fb 0, #fffdf8 45%, #ffe9cf 100%);
+}
+
+.hero-card::before,
+.hero-card::after {
+  content: "";
+  position: absolute;
+  width: 86px;
+  height: 18px;
+  top: 10px;
+  background: repeating-linear-gradient(
+    135deg,
+    #ffe0ea,
+    #ffe0ea 6px,
+    #fff7fb 6px,
+    #fff7fb 12px
+  );
+  opacity: 0.8;
+  border-radius: 6px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+}
+
+.hero-card::before {
+  left: 16px;
+  transform: rotate(-10deg);
+}
+
+.hero-card::after {
+  right: 16px;
+  transform: rotate(8deg);
+}
+
+/* セクションタイトルをもう少し“雑誌見出し”っぽく */
+.section-title {
+  font-size: 18px;
+  letter-spacing: 0.04em;
+}
+
+.section-label {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+/* タグをもっとステッカー風に */
+.tag-chip {
+  background: #fff3f8;
+  border-radius: 999px;
+  border: 1px solid #ffd7eb;
+  color: #c0727f;
+}
+
+.section-pill {
+  background: #fff;
+  border-style: dashed;
+  border-color: #f0cbb8;
+}
+
+/* キャラカードをメモ風に */
+.char-card {
+  border-radius: 18px;
+  background: #fffefb;
+  border-style: dashed;
+  border-color: #f4d7b7;
+}
+
+.char-card.open {
+  background: #fff7f0;
+}
+
+/* 丸いボタン・ホバーをもっとぷにっと */
+.pill-button {
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffe1b8, #ffc3de);
+  box-shadow: 0 6px 14px rgba(255, 165, 190, 0.4);
+}
+
+.pill-button:hover {
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 8px 20px rgba(255, 165, 190, 0.5);
+}
+
+/* 4コマナビ丸ボタン */
+.round-btn {
+  background: #ffd9e4;
+  color: #7a4a4a;
+}
+
+/* 気分ホイールをもっと“ふわふわピロ〜ン”に */
+.mood-display {
+  border-radius: 999px;
+  background: linear-gradient(135deg, #fffaf4, #ffe7df);
+}
+
+.mood-icon {
+  background: radial-gradient(circle at 30% 30%, #fff, #ffe9e1);
+}
+
+/* おまけアコーディオンをメモ帳っぽく */
+.bonus-item {
+  border-style: dashed;
+}
+
+.bonus-header {
+  background: #fff7f1;
+}
+
+.bonus-body {
+  background: #fffdf9;
+}
+
+/* フッター（裏表紙）もふわっと */
+.footer-line {
+  background: linear-gradient(90deg, transparent, #e4c9c0, transparent);
+}
+
+footer {
+  opacity: 0.9;
+}
+
+
+    
   </style>
 </head>
 <body>
