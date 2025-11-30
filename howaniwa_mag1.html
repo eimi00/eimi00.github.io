@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>ほわほわ庭マガジン 創刊号｜ほわマガ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #fff8ec;
+      --card: #fffdf8;
+      --accent: #f8d9a8;
+      --accent2: #f3b9b0;
+      --accent3: #cfdcc5;
+      --text: #5a4a3c;
+      --muted: #9b8f84;
+      --border-soft: #ecd9c4;
+      --shadow-soft: 0 6px 16px rgba(0,0,0,0.08);
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 999px;
+      --transition-fast: 0.2s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont,
+        "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px 16px 40px;
+    }
+
+    /* =====================
+       ヘッダー
+    ====================== */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      margin-bottom: 20px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.75);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+      position: sticky;
+      top: 8px;
+      z-index: 20;
+      backdrop-filter: blur(8px);
+    }
+
+    .logo-block {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fff, #ffe2b6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .logo-text-main {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .logo-text-sub {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .header-tag {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #ffe6e1;
+      font-size: 11px;
+      color: #ba6b60;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    /* =====================
+       セクション共通
+    ====================== */
+    section {
+      margin-bottom: 32px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      margin: 2px 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-pill {
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px dashed var(--border-soft);
+      color: var(--muted);
+    }
+
+    .section-body {
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 18px 18px 20px;
+      border: 1px solid rgba(255,255,255,0.4);
+    }
+
+    .subcard {
+      background: #fff;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-soft);
+      padding: 14px 14px 16px;
+    }
+
+    .tag-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: #fff7f1;
+      color: #bf8c42;
+      margin-right: 6px;
+      margin-bottom: 4px;
+    }
+
+    .tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .pill-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 7px 16px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #ffd9a6, #ffc0cb);
+      color: #5a4132;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .pill-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.16);
+    }
+
+    .pill-button span.icon {
+      font-size: 14px;
+    }
+
+    /* =====================
+       ① 表紙
+    ====================== */
+    .hero {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .hero-card {
+      position: relative;
+      padding: 26px 18px 24px;
+      overflow: hidden;
+    }
+
+    .hero-ribbon {
+      position: absolute;
+      top: 14px;
+      left: -40px;
+      background: #ffcfda;
+      color: #7a4150;
+      padding: 3px 60px;
+      font-size: 11px;
+      font-weight: 600;
+      transform: rotate(-8deg);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+    }
+
+    .hero-main-title {
+      font-size: 22px;
+      margin-top: 24px;
+      margin-bottom: 4px;
+      letter-spacing: 0.06em;
+    }
+
+    .hero-sub-title {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .hero-characters {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 16px;
+      margin: 10px 0 16px;
+    }
+
+    .hero-chip-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .hero-note {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .char-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fff, #ffe9c6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    }
+
+    .char-avatar.bird {
+      background: radial-gradient(circle at 30% 30%, #fff, #dde8f3);
+    }
+
+    .char-avatar.eimi {
+      background: radial-gradient(circle at 30% 30%, #fff, #f9d4e3);
+    }
+
+    .char-label {
+      font-size: 11px;
+      margin-top: 4px;
+      color: var(--muted);
+    }
+
+    /* =====================
+       ② キャラ紹介（小窓風）
+    ====================== */
+    .chars-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1fr);
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    @media (min-width: 640px) {
+      .chars-grid {
+        grid-template-columns: repeat(3, minmax(0,1fr));
+      }
+    }
+
+    .char-card {
+      position: relative;
+      padding: 10px 10px 12px;
+      border-radius: var(--radius-md);
+      background: #fff;
+      border: 1px solid var(--border-soft);
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+                  background var(--transition-fast);
+    }
+
+    .char-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      background: #fffdf8;
+    }
+
+    .char-card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .char-face {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff7ea;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .char-name {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .char-tagline {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .char-toggle {
+      margin-left: auto;
+      font-size: 18px;
+      transform: translateY(-1px);
+      color: var(--muted);
+    }
+
+    .char-body {
+      display: none;
+      font-size: 12px;
+      margin-top: 6px;
+      color: var(--text);
+    }
+
+    .char-card.open .char-body {
+      display: block;
+    }
+
+    .char-card.open .char-toggle {
+      transform: rotate(90deg);
+    }
+
+    /* =====================
+       ③ ほわほわ庭MAP（折りたたみ）
+    ====================== */
+    .map-toggle {
+      margin-top: 8px;
+    }
+
+    .fold-panel {
+      margin-top: 10px;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: max-height 0.3s ease, opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .fold-panel.open {
+      max-height: 600px;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .map-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.2fr) minmax(0,1fr);
+      gap: 12px;
+      margin-top: 8px;
+      align-items: start;
+    }
+
+    @media (max-width: 640px) {
+      .map-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+
+    .map-placeholder {
+      border-radius: var(--radius-md);
+      border: 1px dashed var(--border-soft);
+      background: #fffefb;
+      padding: 12px;
+      font-size: 12px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .map-spots {
+      font-size: 12px;
+    }
+
+    .spot-item {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .spot-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #f8c48a;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .spot-title {
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    /* =====================
+       ④ 4コマスライダー
+    ====================== */
+    .comic-wrapper {
+      margin-top: 4px;
+    }
+
+    .comic-frame {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-soft);
+      background: #fff;
+      padding: 10px 10px 12px;
+    }
+
+    .comic-panel {
+      display: none;
+      font-size: 13px;
+      min-height: 80px;
+    }
+
+    .comic-panel.active {
+      display: block;
+    }
+
+    .comic-meta {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .comic-controls {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .round-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: #ffe6cf;
+      color: #6b4a32;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .round-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    }
+
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #e0d1bf;
+    }
+
+    .dot.active {
+      width: 9px;
+      height: 9px;
+      background: #f4a259;
+    }
+
+    /* =====================
+       ⑤ もちまろ気分ホイール
+    ====================== */
+    .mood-wrapper {
+      display: grid;
+      grid-template-columns: minmax(0,1.1fr) minmax(0,1fr);
+      gap: 12px;
+      align-items: center;
+    }
+
+    @media (max-width: 640px) {
+      .mood-wrapper {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+
+    .mood-display {
+      border-radius: 999px;
+      background: linear-gradient(135deg, #fffaf2, #ffe7d5);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mood-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    }
+
+    .mood-text-main {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .mood-text-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .mood-controls {
+      display: flex;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .mood-label {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* =====================
+       ⑥ おまけ（アコーディオン）
+    ====================== */
+    .bonus-item {
+      margin-top: 10px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-soft);
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .bonus-header {
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .bonus-header span.icon {
+      font-size: 16px;
+      color: var(--muted);
+      transition: transform var(--transition-fast);
+    }
+
+    .bonus-body {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 12px;
+      font-size: 12px;
+      color: var(--text);
+      transition: max-height 0.28s ease, padding 0.25s ease;
+      background: #fffdf9;
+    }
+
+    .bonus-item.open .bonus-body {
+      max-height: 400px;
+      padding: 6px 12px 10px;
+    }
+
+    .bonus-item.open .bonus-header span.icon {
+      transform: rotate(90deg);
+    }
+
+    .bonus-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    /* =====================
+       ⑦ フッター（裏表紙）
+    ====================== */
+    footer {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .footer-line {
+      width: 120px;
+      height: 1px;
+      margin: 0 auto 10px;
+      background: linear-gradient(90deg, transparent, #d4c3ad, transparent);
+    }
+
+    .footer-next {
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .footer-sig {
+      margin-top: 4px;
+    }
+
+    /* =====================
+       細かい装飾
+    ====================== */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #f0efe8;
+      color: #7a7569;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #e1c78c;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo-block">
+        <div class="logo-circle">🌱</div>
+        <div>
+          <div class="logo-text-main">ほわほわ庭マガジン</div>
+          <div class="logo-text-sub">略して「ほわマガ」 / Web 仕掛けZINE</div>
+        </div>
+      </div>
+      <div class="header-tag">創刊号</div>
+    </header>
+
+    <!-- ① 表紙 -->
+    <section class="hero">
+      <div class="card hero-card">
+        <div class="hero-ribbon">NEW! 創刊号</div>
+        <h1 class="hero-main-title">ほわほわ庭マガジン</h1>
+        <p class="hero-sub-title">HowaHowa Garden Web ZINE / vol.1</p>
+
+        <div class="hero-characters">
+          <div>
+            <div class="char-avatar eimi">🧙‍♀️</div>
+            <div class="char-label">エイミ00</div>
+          </div>
+          <div>
+            <div class="char-avatar">🍡</div>
+            <div class="char-label">もちまろ</div>
+          </div>
+          <div>
+            <div class="char-avatar bird">🐦</div>
+            <div class="char-label">トリくん</div>
+          </div>
+        </div>
+
+        <div class="hero-chip-row">
+          <span class="tag-chip"><span class="tag-dot"></span> ゆるっと日常</span>
+          <span class="tag-chip"><span class="tag-dot"></span> ほわほわ世界観</span>
+          <span class="tag-chip"><span class="tag-dot"></span> 小さなし掛けつき</span>
+        </div>
+
+        <p class="hero-note">
+          このページは「紙の仕掛けZINE」をイメージした、<br />
+          ほわほわ庭の Web マガジン創刊号です。
+        </p>
+
+        <button class="pill-button" id="startButton">
+          <span class="icon">📖</span>
+          <span>ページをめくって読む</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ② キャラクター紹介（小窓風） -->
+    <section id="section-characters">
+      <div class="section-label">section 01</div>
+      <div class="section-title">
+        なかまたちの じこしょうかい
+        <span class="section-pill">クリックで小窓オープン</span>
+      </div>
+      <div class="section-body">
+        カードをタップ／クリックすると、それぞれの「ひみつメモ」がひらきます。
+      </div>
+
+      <div class="chars-grid">
+        <!-- エイミ00 -->
+        <div class="char-card" data-char="eimi">
+          <div class="char-card-header">
+            <div class="char-face eimi-face">🧙‍♀️</div>
+            <div>
+              <div class="char-name">エイミ00</div>
+              <div class="char-tagline">自称まほうつかい／ほわ庭の住人</div>
+            </div>
+            <div class="char-toggle">▶</div>
+          </div>
+          <div class="char-body">
+            気分屋でマイペース。<br />
+            その日そのときの「やりたい」をたいせつにしながら、<br />
+            ほわほわ庭の世界をこつこつ育てている人。<br />
+            たまに現実世界のごはんづくりやゲームもがんばる。
+          </div>
+        </div>
+
+        <!-- もちまろ -->
+        <div class="char-card" data-char="mochimaro">
+          <div class="char-card-header">
+            <div class="char-face">🍡</div>
+            <div>
+              <div class="char-name">もちまろ</div>
+              <div class="char-tagline">みたらし団子がだいすき</div>
+            </div>
+            <div class="char-toggle">▶</div>
+          </div>
+          <div class="char-body">
+            まあるいからだに、ちいさな黄色いぼうし。<br />
+            のんびりやさんで、ぼーっとしている時間も多い。<br />
+            でも、おだんごの気配を感じると、ちょっとだけ行動がはやくなる。
+          </div>
+        </div>
+
+        <!-- トリくん -->
+        <div class="char-card" data-char="tori">
+          <div class="char-card-header">
+            <div class="char-face bird-face">🐦</div>
+            <div>
+              <div class="char-name">トリくん</div>
+              <div class="char-tagline">二足歩行のアドバイザー</div>
+            </div>
+            <div class="char-toggle">▶</div>
+          </div>
+          <div class="char-body">
+            すこし背が高くて、エイミ00ともちまろをやさしく見守る存在。<br />
+            たまに、ぴしっとアドバイスもしてくれる。<br />
+            「きょうは休んでもいいんじゃない？」が口ぐせかもしれない。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ ほわほわ庭MAP（折りたたみ） -->
+    <section id="section-map">
+      <div class="section-label">section 02</div>
+      <div class="section-title">
+        ほわほわ庭の ちいさな地図
+        <span class="section-pill">折りたたみMAP風</span>
+      </div>
+      <div class="section-body">
+        「ひらく」ボタンで、ほわほわ庭のミニMAPがひらきます。
+      </div>
+
+      <div class="map-toggle">
+        <button class="pill-button" id="mapToggle">
+          <span class="icon">🗺️</span>
+          <span>MAPをひらく</span>
+        </button>
+      </div>
+
+      <div class="fold-panel" id="mapPanel">
+        <div class="map-grid">
+          <div class="map-placeholder">
+            ここに、のちほど<br />
+            エイミ00 作の「ほわほわ庭MAP」イラストを<br />
+            画像としてペタっと貼る予定のスペース。<br /><br />
+            今は仮のエリアなので、<br />
+            画像ファイル名を<br />
+            <code>img/howaniwa_map.png</code> にして<br />
+            <code>&lt;img&gt;</code>をここに入れればOK。
+          </div>
+          <div class="map-spots">
+            <div class="spot-item">
+              <div class="spot-dot"></div>
+              <div>
+                <div class="spot-title">🍡 だんごスポット</div>
+                <div>もちまろがよくうろうろしているあたり。たまに団子がふってくる（かもしれない）。</div>
+              </div>
+            </div>
+            <div class="spot-item">
+              <div class="spot-dot" style="background:#f3a1a9;"></div>
+              <div>
+                <div class="spot-title">🧙‍♀️ エイミ00の作業机</div>
+                <div>手帳を書いたり、サイトをいじったりしている場所。コーヒーのにおいがする。</div>
+              </div>
+            </div>
+            <div class="spot-item">
+              <div class="spot-dot" style="background:#c6d9f3;"></div>
+              <div>
+                <div class="spot-title">🐦 トリくんの見晴らし台</div>
+                <div>庭を上から見守るポジション。何かあったら、ここからそっと声をかけてくれる。</div>
+              </div>
+            </div>
+            <div class="spot-item">
+              <div class="spot-dot" style="background:#bed7a3;"></div>
+              <div>
+                <div class="spot-title">🌱 ほわ木のした</div>
+                <div>お昼寝したくなる木かげ。読書にもぴったり。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ 日常＆4コマスライダー -->
+    <section id="section-comic">
+      <div class="section-label">section 03</div>
+      <div class="section-title">
+        きょうの ほわほわ4コマ
+        <span class="section-pill">スライドでめくる式</span>
+      </div>
+      <div class="section-body">
+        ボタンで「コマ」をめくると、ちいさな日常が読めます。<br />
+        あとから、エイミ00オリジナル4コマに入れ替えてOKな構造にしてあります。
+      </div>
+
+      <div class="comic-wrapper">
+        <div class="comic-frame">
+          <div class="comic-meta">
+            <span id="comicCounter">1 / 4</span>
+            <span class="badge">
+              <span class="badge-dot"></span> ほわ日常ログ
+            </span>
+          </div>
+
+          <div class="comic-panel active" data-index="0">
+            <strong>1コマめ：</strong>  
+            エイミ00「よし、創刊号つくるぞ〜」<br />
+            もちまろ「……（まだねむい）」<br />
+            トリくん「まずは、ページを1枚ずつでいいんじゃない？」
+          </div>
+          <div class="comic-panel" data-index="1">
+            <strong>2コマめ：</strong>  
+            エイミ00「紙のZINEにするか、Webにするか……」<br />
+            もちまろ「ウェブなら、あとから直し放題だよ」<br />
+            トリくん「カッティングマシンも、いつか出番がくるさ。」
+          </div>
+          <div class="comic-panel" data-index="2">
+            <strong>3コマめ：</strong>  
+            エイミ00「じゃあ、とりあえずWebで“ほわマガ”にしよっか。」<br />
+            もちまろ「ほわマガ〜（ごろごろ）」<br />
+            トリくん「略称、ちゃんとかわいいね。」
+          </div>
+          <div class="comic-panel" data-index="3">
+            <strong>4コマめ：</strong>  
+            エイミ00「創刊号、どこまでつづけられるかな」<br />
+            もちまろ「1ページできたら、それで100点だよ」<br />
+            トリくん「“やれたぶんだけ”が、ほわほわ庭のルール。」
+          </div>
+
+          <div class="comic-controls">
+            <button class="round-btn" id="comicPrev">◀</button>
+            <button class="round-btn" id="comicNext">▶</button>
+          </div>
+          <div class="dots" id="comicDots">
+            <!-- JSでドット生成 -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑤ もちまろ気分ホイール -->
+    <section id="section-mood">
+      <div class="section-label">section 04</div>
+      <div class="section-title">
+        きょうの もちまろきぶんホイール
+        <span class="section-pill">くるっときぶんチェンジ</span>
+      </div>
+      <div class="section-body">
+        「◀」「▶」で、もちまろのきょうのきぶんがくるっと変わります。<br />
+        あとから表情イラストを入れ替えれば、ミニ占いコーナーにも変身。
+      </div>
+
+      <div class="mood-wrapper">
+        <div>
+          <div class="mood-display">
+            <div class="mood-icon" id="moodIcon">😪</div>
+            <div>
+              <div class="mood-text-main" id="moodTitle">ねむねむモード</div>
+              <div class="mood-text-sub" id="moodDesc">
+                まぶたがとろ〜んとしている時間帯。<br />
+                むりにがんばらず、布団と仲よくするのもアリ。
+              </div>
+            </div>
+          </div>
+          <div class="mood-label">※内容はサンプルなので、自由に差し替えてOK</div>
+        </div>
+        <div>
+          <div class="mood-controls">
+            <button class="pill-button" id="moodPrev">
+              <span class="icon">◀</span><span>前のきぶん</span>
+            </button>
+            <button class="pill-button" id="moodNext">
+              <span class="icon">▶</span><span>つぎのきぶん</span>
+            </button>
+          </div>
+          <p style="font-size:12px; margin-top:10px;">
+            アイデア例：<br />
+            ・ねむねむモード<br />
+            ・ごろごろモード<br />
+            ・やる気ちょい出てきたモード<br />
+            ・おだんご食べたいモード などなど。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑥ おまけコーナー -->
+    <section id="section-bonus">
+      <div class="section-label">section 05</div>
+      <div class="section-title">
+        おまけの ほわほわ仕掛けコーナー
+        <span class="section-pill">ひらくと ちょっと楽しい</span>
+      </div>
+      <div class="section-body">
+        タイトル部分をタップすると、中身がひらきます。<br />
+        ここには、DLリンクやちいさな占い、メモなどを入れてもOK。
+      </div>
+
+      <!-- おみくじ -->
+      <div class="bonus-item">
+        <div class="bonus-header">
+          <span>🎴 きょうの ほわほわおみくじ</span>
+          <span class="icon">▶</span>
+        </div>
+        <div class="bonus-body">
+          <p id="omikujiText">
+            ボタンをおしたら、きょうのほわ運がでてきます。
+          </p>
+          <button class="pill-button" id="omikujiButton">
+            <span class="icon">🔮</span><span>おみくじをひく</span>
+          </button>
+          <div class="bonus-note">
+            ※ 結果の文言はあとで自由にカスタマイズしてね。
+          </div>
+        </div>
+      </div>
+
+      <!-- ぬりえ -->
+      <div class="bonus-item">
+        <div class="bonus-header">
+          <span>🖍️ もちまろ ぬりえコーナー</span>
+          <span class="icon">▶</span>
+        </div>
+        <div class="bonus-body">
+          <p>
+            ここに、ぬりえ用の画像リンクを置けます。<br />
+            例：<code>img/mochimaro_nurie.png</code> をアップして、
+          </p>
+          <p>
+            <code>&lt;a href="img/mochimaro_nurie.png" download&gt;ぬりえをダウンロード&lt;/a&gt;</code><br />
+            みたいに書けばOK。
+          </p>
+          <div class="bonus-note">
+            ※ とりあえずテキストだけ入れてあるので、あとで差し替え推奨。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑦ フッター（裏表紙的な） -->
+    <footer>
+      <div class="footer-line"></div>
+      <div class="footer-next">
+        次号予告：vol.2「冬のほわほわ庭」（予定/きまぐれ）❄
+      </div>
+      <div class="footer-sig">
+        つくったひと：エイミ00 ／ ほわほわ庭のなかまたちより
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // スムーススクロール：表紙 -> キャラ紹介
+    document.getElementById("startButton")?.addEventListener("click", () => {
+      const el = document.getElementById("section-characters");
+      if (!el) return;
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    // キャラカード：小窓トグル
+    document.querySelectorAll(".char-card").forEach(card => {
+      card.addEventListener("click", () => {
+        card.classList.toggle("open");
+      });
+    });
+
+    // MAP 折りたたみ
+    const mapBtn = document.getElementById("mapToggle");
+    const mapPanel = document.getElementById("mapPanel");
+    if (mapBtn && mapPanel) {
+      mapBtn.addEventListener("click", () => {
+        const isOpen = mapPanel.classList.toggle("open");
+        mapBtn.querySelector("span:nth-child(2)").textContent = isOpen
+          ? "MAPをとじる"
+          : "MAPをひらく";
+      });
+    }
+
+    // 4コマスライダー
+    const panels = Array.from(document.querySelectorAll(".comic-panel"));
+    const dotsContainer = document.getElementById("comicDots");
+    const counter = document.getElementById("comicCounter");
+    let comicIndex = 0;
+
+    function renderComic() {
+      panels.forEach((p, i) => {
+        p.classList.toggle("active", i === comicIndex);
+      });
+      counter.textContent = (comicIndex + 1) + " / " + panels.length;
+      if (dotsContainer) {
+        dotsContainer.querySelectorAll(".dot").forEach((d, i) => {
+          d.classList.toggle("active", i === comicIndex);
+        });
+      }
+    }
+
+    if (dotsContainer && panels.length) {
+      panels.forEach((_, i) => {
+        const dot = document.createElement("div");
+        dot.className = "dot" + (i === 0 ? " active" : "");
+        dotsContainer.appendChild(dot);
+      });
+    }
+
+    document.getElementById("comicPrev")?.addEventListener("click", () => {
+      comicIndex = (comicIndex - 1 + panels.length) % panels.length;
+      renderComic();
+    });
+
+    document.getElementById("comicNext")?.addEventListener("click", () => {
+      comicIndex = (comicIndex + 1) % panels.length;
+      renderComic();
+    });
+
+    // 初期描画
+    renderComic();
+
+    // もちまろ気分ホイール
+    const moods = [
+      {
+        icon: "😪",
+        title: "ねむねむモード",
+        desc: "まぶたがとろ〜んとしている時間帯。むりにがんばらず、布団と仲よくするのもアリ。"
+      },
+      {
+        icon: "🛌",
+        title: "ごろごろモード",
+        desc: "きょうはソファとおともだち。何もしない時間も、ちゃんとたいせつな時間。"
+      },
+      {
+        icon: "✨",
+        title: "ちょっとやる気モード",
+        desc: "10分だけ…と思って、すこしだけ手帳を書いたり、サイトをいじったりしてみる。"
+      },
+      {
+        icon: "🍡",
+        title: "おだんご食べたいモード",
+        desc: "甘いもののことばかり考えてしまう日。ごほうびスイーツをえらぶ時間も楽しい。"
+      }
+    ];
+
+    let moodIndex = 0;
+    const moodIcon = document.getElementById("moodIcon");
+    const moodTitle = document.getElementById("moodTitle");
+    const moodDesc = document.getElementById("moodDesc");
+
+    function renderMood() {
+      const m = moods[moodIndex];
+      if (!m) return;
+      if (moodIcon) moodIcon.textContent = m.icon;
+      if (moodTitle) moodTitle.textContent = m.title;
+      if (moodDesc) moodDesc.textContent = m.desc;
+    }
+
+    document.getElementById("moodPrev")?.addEventListener("click", () => {
+      moodIndex = (moodIndex - 1 + moods.length) % moods.length;
+      renderMood();
+    });
+
+    document.getElementById("moodNext")?.addEventListener("click", () => {
+      moodIndex = (moodIndex + 1) % moods.length;
+      renderMood();
+    });
+
+    renderMood();
+
+    // おまけ：アコーディオン
+    document.querySelectorAll(".bonus-item").forEach(item => {
+      const header = item.querySelector(".bonus-header");
+      if (!header) return;
+      header.addEventListener("click", () => {
+        item.classList.toggle("open");
+      });
+    });
+
+    // おみくじ
+    const omikujiMessages = [
+      "だいほわ吉：なにもしなくても、なんとかなる日。",
+      "ほわ吉：よく寝て、よく食べたら、大体OK。",
+      "小ほわ吉：やりたいことをひとつだけやると満足度アップ。",
+      "もっちり平：今日は「普通」でいてくれるだけで100点。",
+      "ひみつ吉：ひらめきがふと降ってくるかも。メモ帳をそばに。"
+    ];
+
+    const omikujiButton = document.getElementById("omikujiButton");
+    const omikujiText = document.getElementById("omikujiText");
+
+    omikujiButton?.addEventListener("click", () => {
+      const i = Math.floor(Math.random() * omikujiMessages.length);
+      if (omikujiText) {
+        omikujiText.textContent = omikujiMessages[i];
+      }
+    });
+  </script>
+</body>
+</html>
