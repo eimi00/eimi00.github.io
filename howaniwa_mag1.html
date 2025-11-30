@@ -847,6 +847,135 @@ footer {
   opacity: 0.9;
 }
 
+/* =========================
+   ほわマガ やさしい紙ZINE調整（フラット版）
+========================= */
+
+/* 背景：ほぼ白のクリームだけ（グラデなし） */
+body {
+  background: #fffaf4; /* ほわ庭標準カラー */
+}
+
+/* カード系：ZINEの紙質みたいにする */
+.card,
+.subcard,
+.comic-frame,
+.bonus-item,
+.map-placeholder {
+  background: #ffffff;
+  border: 1.4px solid #f0e4d6; /* うすい紙の線 */
+  border-radius: 18px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.05); /* 最小のふわ影 */
+}
+
+/* 表紙カード：単色 + 紙感だけでかわいい */
+.hero-card {
+  background: #fffefc;
+  border-radius: 26px;
+  border: 1.6px solid #ecd8c4;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+/* マステ風テープ：色味を淡くフラットに */
+.hero-card::before,
+.hero-card::after {
+  content: "";
+  position: absolute;
+  width: 70px;
+  height: 16px;
+  top: 10px;
+  background: #ffeef5; /* うすピンク一色 */
+  opacity: 0.8;
+  border-radius: 4px;
+}
+
+.hero-card::before { left: 20px; transform: rotate(-8deg); }
+.hero-card::after { right: 20px; transform: rotate(8deg); }
+
+/* ヘッダー：フラットで可愛いタグ感 */
+header {
+  background: #ffffffdd;
+  border: 1px solid #f1e4d7;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  border-radius: 20px;
+}
+
+/* タグ（pill）をもっと手帳のラベル風に */
+.section-pill {
+  background: #fff;
+  border: 1px dashed #e3c7ab;
+  color: #8f806d;
+}
+
+/* 全体の色味を少し落として優しい雰囲気に */
+.section-title {
+  color: #5a4e44;
+}
+
+.section-label {
+  color: #b8a89b;
+}
+
+/* キャラカード：付箋風 */
+.char-card {
+  background: #fffaf4;
+  border: 1.4px dashed #e2c7a7;
+}
+
+.char-card.open {
+  background: #fff5ea;
+}
+
+/* ボタンはシンプルなフラットカラー */
+.pill-button {
+  background: #ffe7d1;
+  border: 1px solid #e1c2a8;
+  color: #5f4e41;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+}
+
+.pill-button:hover {
+  background: #ffe1c4;
+}
+
+/* 丸ボタン（4コマのナビ）もフラット */
+.round-btn {
+  background: #ffe3d4;
+  border: 1px solid #e4c7b5;
+  color: #6a4c3c;
+}
+
+/* 気分ホイール：シンプルな帯へ */
+.mood-display {
+  background: #fffaf5;
+  border: 1px solid #e9d4c4;
+}
+
+.mood-icon {
+  background: #ffffff;
+  border: 1px solid #ecdcd0;
+}
+
+/* おまけ（アコーディオン） */
+.bonus-header {
+  background: #fff7ef;
+  border-bottom: 1px solid #f1e0ce;
+}
+
+.bonus-body {
+  background: #fffdf9;
+}
+
+/* フッターもフラット・控えめ */
+footer {
+  opacity: 0.85;
+}
+
+.footer-line {
+  background: #ead8c9;
+}
+
+    
 
     
   </style>
